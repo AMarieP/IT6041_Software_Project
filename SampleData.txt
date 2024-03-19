@@ -1,0 +1,182 @@
+{
+  "artworks": [
+    {
+      "name": "The Kiss",
+      "date": "1907-1908",
+      "dimensions": "180 cm × 180 cm (70.9 in × 70.9 in)",
+      "artist": "Gustav Klimt",
+      "medium": "Oil on canvas",
+      "description": "The Kiss is a masterpiece of Vienna Secession movement, depicting a couple locked in a passionate embrace.",
+      "images": ["https://example.com/the_kiss_image1.jpg", "https://example.com/the_kiss_image2.jpg"]
+    },
+    {
+      "name": "Girl with a Pearl Earring",
+      "date": "1665",
+      "dimensions": "46.5 cm × 40 cm (18.3 in × 15.7 in)",
+      "artist": "Johannes Vermeer",
+      "medium": "Oil on canvas",
+      "description": "This iconic painting portrays a young woman wearing an exotic turban, with a large pearl earring.",
+      "images": ["https://example.com/girl_with_pearl_earring_image1.jpg", "https://example.com/girl_with_pearl_earring_image2.jpg"]
+    },
+    {
+      "name": "American Gothic",
+      "date": "1930",
+      "dimensions": "74 cm × 62 cm (29 in × 24 in)",
+      "artist": "Grant Wood",
+      "medium": "Oil on beaverboard",
+      "description": "American Gothic is a classic depiction of rural American life, featuring a stern-looking farmer and his daughter standing in front of a Gothic Revival style house.",
+      "images": ["https://example.com/american_gothic_image1.jpg", "https://example.com/american_gothic_image2.jpg"]
+    },
+    {
+      "name": "Water Lilies",
+      "date": "1916-1926",
+      "dimensions": "Approximately 200 cm × 425 cm (79 in × 167 in)",
+      "artist": "Claude Monet",
+      "medium": "Oil on canvas",
+      "description": "Monet's Water Lilies series captures the beauty and tranquility of his garden pond in Giverny, France.",
+      "images": ["https://example.com/waterlilies_image1.jpg", "https://example.com/waterlilies_image2.jpg"]
+    },
+    {
+      "name": "Venus of Willendorf",
+      "date": "Estimated to be 28,000–25,000 BCE",
+      "dimensions": "11.1 cm (4.4 in) high",
+      "artist": "Unknown",
+      "medium": "Limestone",
+      "description": "This prehistoric sculpture is one of the earliest known depictions of the human form, representing a fertility goddess.",
+      "images": ["https://example.com/venus_of_willendorf_image1.jpg", "https://example.com/venus_of_willendorf_image2.jpg"]
+    },
+    {
+      "name": "The Little Fourteen-Year-Old Dancer",
+      "date": "Modeled ca. 1880; cast in bronze posthumously",
+      "dimensions": "Approximately 98 cm × 29 cm × 28 cm (38.5 in × 11.5 in × 11 in)",
+      "artist": "Edgar Degas",
+      "medium": "Bronze, real hair, fabric tutu, silk ribbon",
+      "description": "Degas' sculpture is renowned for its realism and controversial portrayal of a young ballet dancer.",
+      "images": ["https://example.com/little_dancer_image1.jpg", "https://example.com/little_dancer_image2.jpg"]
+    },
+    {
+      "name": "Famous Ceramic Bowl",
+      "date": "N/A",
+      "dimensions": "Varies",
+      "artist": "Various",
+      "medium": "Ceramic",
+      "description": "This famous ceramic bowl is renowned for its craftsmanship and artistic design.",
+      "images": ["https://example.com/famous_ceramic_bowl_image1.jpg", "https://example.com/famous_ceramic_bowl_image2.jpg"]
+    },
+
+  ]
+  "moldings": [
+    {
+      "name": "Vintage Brass Filigree Molding",
+      "profile": "Filigree",
+      "finish": "Antique brass",
+      "colour": ["Brass"],
+      "timber": ["Metal"],
+      "dimensions": "Width: 2.5 inches, Depth: 0.5 inches",
+      "description": "Exuding elegance and vintage charm, this brass filigree molding features intricate patterns reminiscent of bygone eras, perfect for framing cherished memories with timeless style.",
+      "image": ["https://example.com/vintage_brass_filigree_molding_image.jpg"]
+    },
+    {
+      "name": "Contemporary Silver Leaf Molding",
+      "profile": "Contemporary",
+      "finish": "Silver leaf",
+      "colour": ["Silver"],
+      "timber": ["Hardwood"],
+      "dimensions": "Width: 2 inches, Depth: 1 inch",
+      "description": "Sleek and sophisticated, this contemporary molding showcases a striking silver leaf finish, adding a touch of modern luxury to any picture frame.",
+      "image": ["https://example.com/contemporary_silver_leaf_molding_image.jpg"]
+    },
+    {
+      "name": "French Provincial White Molding",
+      "profile": "French Provincial",
+      "finish": "Distressed white",
+      "colour": ["White"],
+      "timber": ["Hardwood"],
+      "dimensions": "Width: 2.75 inches, Depth: 1 inch",
+      "description": "Bringing a touch of French countryside charm, this white molding features a distressed finish and ornate detailing, perfect for framing romantic landscapes and portraits.",
+      "image": ["https://example.com/french_provincial_white_molding_image.jpg"]
+    },
+    {
+      "name": "Gothic Black Wood Molding",
+      "profile": "Gothic",
+      "finish": "Matte black",
+      "colour": ["Black"],
+      "timber": ["Hardwood"],
+      "dimensions": "Width: 3 inches, Depth: 1.25 inches",
+      "description": "Inspired by Gothic architecture, this black wood molding adds drama and sophistication to picture frames, with its bold lines and matte black finish commanding attention.",
+      "image": ["https://example.com/gothic_black_wood_molding_image.jpg"]
+    },
+    {
+      "name": "Victorian Gilded Molding",
+      "profile": "Victorian",
+      "finish": "Gold gilding",
+      "colour": ["Gold"],
+      "timber": ["Hardwood"],
+      "dimensions": "Width: 3.5 inches, Depth: 1.5 inches",
+      "description": "Embrace opulence with this Victorian gilded molding, featuring intricate details and a lavish gold gilding finish, ideal for framing fine art and heirloom portraits.",
+      "image": ["https://example.com/victorian_gilded_molding_image.jpg"]
+    },
+    {
+      "name": "Minimalist Oak Wood Molding",
+      "profile": "Minimalist",
+      "finish": "Natural oak",
+      "colour": ["Brown"],
+      "timber": ["Oak"],
+      "dimensions": "Width: 1.25 inches, Depth: 0.75 inches",
+      "description": "Simple yet sophisticated, this oak wood molding offers a clean and minimalist design, showcasing the natural beauty of oak while providing a subtle frame for any artwork.",
+      "image": ["https://example.com/minimalist_oak_wood_molding_image.jpg"]
+    }
+  ],
+{
+  "matteboards": [
+    {
+      "name": "Classic White Matteboard",
+      "thickness": "3 mm",
+      "colours": ["White"],
+      "finish": "Matte",
+      "materials": ["Paper"],
+      "description": ["Enhance your artwork with this classic white matteboard. Its neutral color and matte finish provide a clean and elegant border, drawing attention to your masterpiece."]
+    },
+    {
+      "name": "Antique Ivory Matteboard",
+      "thickness": "4.5 mm",
+      "colours": ["Ivory"],
+      "finish": "Textured",
+      "materials": ["Paper"],
+      "description": ["Add vintage charm to your framed art with this antique ivory matteboard. Its textured finish and warm hue create a timeless backdrop, perfect for showcasing traditional and historical pieces."]
+    },
+    {
+      "name": "Modern Black Matteboard",
+      "thickness": "2.5 mm",
+      "colours": ["Black"],
+      "finish": "Smooth",
+      "materials": ["Paper"],
+      "description": ["Achieve a sleek and contemporary look with this modern black matteboard. Its smooth finish and deep black color provide a striking contrast, emphasizing the details of your artwork."]
+    },
+    {
+      "name": "Soft Pastel Matteboard Set",
+      "thickness": "3 mm",
+      "colours": ["Light Blue", "Soft Pink", "Pale Yellow"],
+      "finish": "Textured",
+      "materials": ["Paper"],
+      "description": ["Add a touch of softness to your framed art with this set of pastel matteboards. Featuring light blue, soft pink, and pale yellow hues, each matteboard offers a textured finish, creating a delicate and whimsical presentation."]
+    },
+    {
+      "name": "Rich Burgundy Matteboard",
+      "thickness": "3.5 mm",
+      "colours": ["Burgundy"],
+      "finish": "Velvet",
+      "materials": ["Paper"],
+      "description": ["Elevate your artwork with this rich burgundy matteboard. Its luxurious velvet finish and deep red color exude elegance and sophistication, making it an ideal choice for framing high-end pieces."]
+    },
+    {
+      "name": "Earth Tones Matteboard Collection",
+      "thickness": "3 mm",
+      "colours": ["Olive Green", "Terracotta", "Slate Gray"],
+      "finish": "Matte",
+      "materials": ["Paper"],
+      "description": ["Bring the beauty of nature into your framed art with this collection of earth tones matteboards. Featuring olive green, terracotta, and slate gray colors, each matteboard offers a matte finish, adding warmth and depth to your artwork."]
+    }
+  ]
+}
+
