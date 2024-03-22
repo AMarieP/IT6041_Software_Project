@@ -25,7 +25,11 @@ const stockSchema = new Schema ({
     },
     images: [{
         type: String,
-    }]
+    }],
+    dateCreated: {
+        type: Date,
+        default: Date.now
+    }
 
     
     
