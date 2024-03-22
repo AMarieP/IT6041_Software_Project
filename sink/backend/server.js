@@ -5,6 +5,9 @@ const mongoose = require('mongoose')
 
 const app = express()
 
+//route import
+const stockRoutes = require('./routes/stock')
+
 // middleware
 app.use(express.json())
 
@@ -14,9 +17,7 @@ app.use((req,res,next) => {
 })
 
 //routes
-app.get('/', (req, res) => {
-   
-})
+app.use('/api/stock', stockRoutes)
 
 // connect to db
 mongoose.connect(process.env.MONGO_URI)
