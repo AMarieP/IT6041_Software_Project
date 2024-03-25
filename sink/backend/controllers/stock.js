@@ -4,7 +4,8 @@ const Stock = require('../models/stockModel')
 const getAllStock = async (req, res) => {
 
     try{
-        const stock = await Stock.find({}) //sort by date of creation, other sort funtionality done by JS
+        const stock = await Stock.find({}).sort({createdAt : 'asc'}) //sort by date of creation, other sort funtionality done by JS
+        console.log('Getting Stock')
         res.status(200).json(stock)//return stock as JSON
 
     }catch(err){
@@ -14,14 +15,15 @@ const getAllStock = async (req, res) => {
 
 //GET ONE Get One Stock by ID
 const getOneStockByID = async (req, res) => {
-    const thisStockID = req.body.id
 
     try{
-        const stock = await Stock.findById(thisStockID)
+        const stock = await Stock.findOne({ _id: req.params.id});
+        console.log(stock)
 
         if(!stock){
-            res.status(404).json("Stock does not exist")
+            res.status(404).json("This item of stock does not exist")
         }
+        res.status(200).json(stock)
 
     }catch(err) {
         res.status(400).json({err: err.message })
@@ -32,11 +34,12 @@ const getOneStockByID = async (req, res) => {
 
 //NEW Create New Stock 
 const createStock = async (req, res) => {
-    const newStock = req.body //can desctrcu here ideally
+    const newStock = new Stock(req.body);
 
     try {
-        const stock = await Stock.create({newStock})
-        res.status(200).json(stock)
+        await newStock.save();
+        res.status(200).json(newStock)
+        
     } catch (err) {
         res.status(400).json({err: err.message})
     }
@@ -44,7 +47,8 @@ const createStock = async (req, res) => {
 
 //DELETE Delete Stock By ID
 const deleteStock = async (req, res) => {
-    const thisStockID = req.body.id
+    const thisStockID = req.params.id
+    console.log(thisStockID)
 
     try{
         const document = await Stock.findByIdAndDelete(thisStockID)
