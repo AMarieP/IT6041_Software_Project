@@ -2,10 +2,32 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
 
+const artistSchema = new Schema ({
+    name: {
+        type: String,
+        required: true
+    },
+    dateOfBirth: {
+        type: String,
+        default: 'Unknown'
+    },
+    dateOfDeath: {
+        type: String,
+        default: 'Unknown'
+        },
+    placeOfBirth: {
+        type: String,
+        default: 'Unknown'
+    },
+    description: {
+        type: String
+    }
+}, { timestamp: true })
+
 const stockSchema = new Schema ({
     name: { 
         type: String,
-        required: True
+        required: true
     },
     date: { 
         type: String, //date not type: Date as string allows more flexibility
@@ -28,28 +50,6 @@ const stockSchema = new Schema ({
     }]
 
 }, { timestamp: true }) //creates timestamp property when new document is created
-
-const artistSchema = new Schema ({
-    name: {
-        type: String,
-        required: True
-    },
-    dateOfBirth: {
-        type: String,
-        default: 'Unknown'
-    },
-    dateOfDeath: {
-        type: String,
-        default: 'Unknown'
-        },
-    placeOfBirth: {
-        type: String,
-        default: 'Unknown'
-    },
-    description: {
-        type: String
-    }
-}, { timestamp: true })
 
 
 module.exports = mongoose.model('Stock', stockSchema)

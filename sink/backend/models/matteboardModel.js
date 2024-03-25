@@ -5,7 +5,7 @@ const Schema = mongoose.Schema
 const matteboardSchema = new Schema ({
     name: {
         type: String,
-        required: True
+        required: true
     },
     thickness: {
         type: String
