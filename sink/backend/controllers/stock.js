@@ -1,4 +1,5 @@
 const Stock = require('../models/stockModel')
+const mongoose = require('mongoose')
 
 //GET All Stock Sorted by Date of Creation
 const getAllStock = async (req, res) => {
@@ -15,11 +16,18 @@ const getAllStock = async (req, res) => {
 
 //GET ONE Get One Stock by ID
 const getOneStockByID = async (req, res) => {
+    const stockID = req.params.id
 
     try{
-        const stock = await Stock.findOne({ _id: req.params.id});
-        console.log(stock)
-
+        
+        //Test if ID is Valid
+        if(!mongoose.Types.ObjectId.isValid(stockID)){
+            return res.status(404).json({err: "This Stock ID is Invalid"})
+        }
+        
+        const stock = await Stock.findOne({ _id: stockID});
+        
+        //Error handling if does not exist, but ID is Valid
         if(!stock){
             res.status(404).json("This item of stock does not exist")
         }
