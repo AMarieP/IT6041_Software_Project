@@ -2,10 +2,10 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
 
-const mouldingModel = new Schema ({
+const mouldingSchema = new Schema ({
     name: {
         type: String,
-        required: True
+        required: true
     },
     profile: {
         type: String
@@ -25,9 +25,6 @@ const mouldingModel = new Schema ({
     description: {
         type: String
     },
-    dateCreated: {
-        type: Date,
-        default: Date.now
-    },
-    
-})
+}, { timestamp: true }) //creates timestamp property when new document is created
+
+module.exports = mongoose.model('Moulding', mouldingSchema)

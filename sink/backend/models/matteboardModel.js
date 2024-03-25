@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
 
-const matteboard = new Schema ({
+const matteboardSchema = new Schema ({
     name: {
         type: String,
         required: True
@@ -21,10 +21,7 @@ const matteboard = new Schema ({
     },
     description: {
         type: String
-    },
-    dateCreated: {
-        type: Date,
-        default: Date.now
-    },
-    
-})
+    },    
+}, { timestamp: true }) //creates timestamp property when new document is created
+
+module.exports = mongoose.model('Matteboard', matteboardSchema)

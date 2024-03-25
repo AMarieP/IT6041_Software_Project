@@ -14,7 +14,7 @@ const stockSchema = new Schema ({
         type: String,
     },
     artist: {
-        type: String,
+        type: [artistSchema],
         default: 'Unknown'
     },
     medium: [{
@@ -25,12 +25,31 @@ const stockSchema = new Schema ({
     },
     images: [{
         type: String,
-    }],
-    dateCreated: {
-        type: Date,
-        default: Date.now
-    }
+    }]
 
-    
-    
-})
+}, { timestamp: true }) //creates timestamp property when new document is created
+
+const artistSchema = new Schema ({
+    name: {
+        type: String,
+        required: True
+    },
+    dateOfBirth: {
+        type: String,
+        default: 'Unknown'
+    },
+    dateOfDeath: {
+        type: String,
+        default: 'Unknown'
+        },
+    placeOfBirth: {
+        type: String,
+        default: 'Unknown'
+    },
+    description: {
+        type: String
+    }
+}, { timestamp: true })
+
+
+module.exports = mongoose.model('Stock', stockSchema)
