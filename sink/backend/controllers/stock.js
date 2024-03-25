@@ -2,16 +2,31 @@ const Stock = require('../models/stockModel')
 
 //GET All Stock Sorted by Date of Creation
 const getAllStock = async (req, res) => {
-    const stock = await Stock.find({}) //sort by date of creation, other sort funtionality done by JS
 
-    res.status(200).json(stock)
+    try{
+        const stock = await Stock.find({}) //sort by date of creation, other sort funtionality done by JS
+        res.status(200).json(stock)//return stock as JSON
+
+    }catch(err){
+        res.status(400).json({err: err.message })
+    }
 }
 
 //GET ONE Get One Stock by ID
 const getOneStockByID = async (req, res) => {
     const thisStockID = req.body.id
 
-    const stock = await Stock.findById(thisStockID)
+    try{
+        const stock = await Stock.findById(thisStockID)
+
+        if(!stock){
+            res.status(404).json("Stock does not exist")
+        }
+
+    }catch(err) {
+        res.status(400).json({err: err.message })
+    }
+
 }
 
 
