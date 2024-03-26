@@ -2,28 +2,6 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
 
-const artistSchema = new Schema ({
-    name: {
-        type: String,
-        required: true
-    },
-    dateOfBirth: {
-        type: String,
-        default: 'Unknown'
-    },
-    dateOfDeath: {
-        type: String,
-        default: 'Unknown'
-        },
-    placeOfBirth: {
-        type: String,
-        default: 'Unknown'
-    },
-    description: {
-        type: String
-    }
-}, { timestamp: true })
-
 const stockSchema = new Schema ({
     name: { 
         type: String,
@@ -36,7 +14,7 @@ const stockSchema = new Schema ({
         type: String,
     },
     artist: {
-        type: [artistSchema],
+        type: String,
         default: 'Unknown'
     },
     medium: [{
