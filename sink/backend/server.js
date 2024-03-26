@@ -7,6 +7,8 @@ const app = express()
 
 //route import
 const stockRoutes = require('./routes/stock')
+const matteboardRoutes = require('./routes/matteboard')
+const mouldingRoutes = require('./routes/moulding')
 
 // middleware
 app.use(express.json())
@@ -18,6 +20,8 @@ app.use((req, res, next) => {
 
 //routes
 app.use('/api/stock', stockRoutes)
+app.use('/api/matteboard', matteboardRoutes)
+app.use('api/moulding', mouldingRoutes)
 
 // connect to db
 mongoose.connect(process.env.MONGO_URI)
