@@ -20,14 +20,15 @@ const getOneStockByID = async (req, res) => {
 
     try{
         
-        //Test if ID is Valid
+        //Test if ID is Valid before looking for Stock
         if(!mongoose.Types.ObjectId.isValid(stockID)){
             return res.status(404).json({err: "This Stock ID is Invalid"})
         }
         
+        //Find the stock by ID
         const stock = await Stock.findOne({ _id: stockID});
         
-        //Error handling if does not exist, but ID is Valid
+        //Error handling if does not exist, but ID is Valid - issues iwth this as will stil crash
         if(!stock){
             res.status(404).json("This item of stock does not exist")
         }
@@ -55,17 +56,22 @@ const createStock = async (req, res) => {
 
 //DELETE Delete Stock By ID
 const deleteStock = async (req, res) => {
-    const thisStockID = req.params.id
-    console.log(thisStockID)
+    const stockID = req.params.id
 
     try{
-        const document = await Stock.findByIdAndDelete(thisStockID)
+        
+        //Test if ID is Valid before looking for Stock
+        if(!mongoose.Types.ObjectId.isValid(stockID)){
+            return res.status(404).json({err: "This Stock ID is Invalid"})
+        }
+        
+        const document = await Stock.findByIdAndDelete(stockID)
         console.log("Stock to be deleted: ", document)
 
         if(!document) { //Error handle if stock unfound
-            return res.status(404).send("Stock Unfound")
+            return res.status(404).send("Stock Unfound, unable to delete.")
         }
-        res.status(204).send(`Stock ID ${req.body.id} deleted`)
+        res.status(204).json(`Stock with ID ${req.body.id} deleted`) //this message will not appear, need to have this fixed. But funtion works sucessfully
 
     }catch(err) {
         res.status(500).json({err: err.message})
@@ -78,14 +84,25 @@ const updateStock = async (req, res) => {
     const updates = req.body
     
     try{ 
+        
+        //Test if ID is Valid before looking for Stock
+        if(!mongoose.Types.ObjectId.isValid(req.params.id)){
+            return res.status(404).json({err: "This Stock ID is Invalid"})
+        }
+
         const document = await Stock.findByIdAndUpdate(
             req.params.id,
             updates,
             { new: true, runValidators: true}
         )
 
+        if(!document){
+            return res.status(404).json({err: "Stock to be updated unfound, cannot be updated."})
+        }
+
         await document.save()
         res.status(200).send(document)
+        
     }catch(err) {
         res.status(500).json({err: err.message})
     }
