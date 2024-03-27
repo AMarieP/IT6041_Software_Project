@@ -6,6 +6,7 @@ const getAllMoulding = async (req, res) => {
 
     try{
         const moulding = await Moulding.find({}).sort({createdAt : 'asc'}) //sort by date of creation, other sort funtionality done by JS
+
         console.log('Getting moulding')
         res.status(200).json(moulding)//return moulding as JSON
 
@@ -50,6 +51,7 @@ const createMoulding = async (req, res) => {
         res.status(200).json(newMoulding)
         
     } catch (err) {
+        console.log(err)
         res.status(400).json({err: err.message})
     }
 }

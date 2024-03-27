@@ -21,7 +21,7 @@ app.use((req, res, next) => {
 //routes
 app.use('/api/stock', stockRoutes)
 app.use('/api/matteboard', matteboardRoutes)
-app.use('api/moulding', mouldingRoutes)
+app.use('/api/moulding', mouldingRoutes)
 
 // connect to db
 mongoose.connect(process.env.MONGO_URI)
