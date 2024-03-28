@@ -1,4 +1,3 @@
-import { withTheme } from '@rneui/themed'
 import React from 'react'
 
 function BoxWithDropshadow({children}) {
