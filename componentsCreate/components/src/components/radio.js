@@ -12,7 +12,7 @@ function radio({name, value, children}) {
 
   return (
     <label>
-        <input type="radio" name={name} value={value} style={() => {
+        <input type="radio" name={name} value={isChecked} style={() => {
             //Can we rewrite in shorthand :) I just cbf rn!
             if(isChecked){
                 return styles.checked
