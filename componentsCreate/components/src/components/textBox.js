@@ -1,9 +1,22 @@
 import React from 'react'
 
-function textBox() {
+function TextBox({id, name}) {
   return (
-    <div>textBox</div>
+    <>
+    <label for={name}>{name}</label>
+    <input type="text" id={id} name={name}/>
+    </>
+
   )
 }
 
-export default textBox
+const styles = {
+    label: {
+
+    },
+    inputBox: {
+        
+    }
+}
+
+export default TextBox
