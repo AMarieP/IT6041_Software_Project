@@ -9,6 +9,8 @@ import Stockcurd from './pages/Stockcurd';
 import ViewAListing from './pages/ViewAListing';
 import ViewFandM from './pages/ViewFandM';
 import ViewStock from './pages/ViewStock';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
 
 function App() {
   //user can be used to verify a user is logged in and redirect accordingly
@@ -17,6 +19,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <Navbar />
         <Routes>
           <Route
             path = "/login"
@@ -41,6 +44,10 @@ function App() {
           <Route
             path = "/ViewStock"
             element = {<ViewStock/>}
+          />
+          <Route
+            path = "/Home"
+            element = {<Home/>}
           />
         </Routes>
       </BrowserRouter>
