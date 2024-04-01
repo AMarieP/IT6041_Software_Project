@@ -7,16 +7,25 @@ const userRoutes = require('./routes/user')
 //express app
 const app = express()
 
+//route import
+const stockRoutes = require('./routes/stock')
+const matteboardRoutes = require('./routes/matteboard')
+const mouldingRoutes = require('./routes/moulding')
+
 // middleware
 app.use(express.json())
 
-app.use((req,res,next) => {
+app.use((req, res, next) => {
     console.log(req.path,req.method)
     next()
 })
 
 //routes
+
 app.use('/api/user', userRoutes)
+app.use('/api/stock', stockRoutes)
+app.use('/api/matteboard', matteboardRoutes)
+app.use('/api/moulding', mouldingRoutes)
 
 
 // connect to db
