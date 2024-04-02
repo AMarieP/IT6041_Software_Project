@@ -1,4 +1,5 @@
 import {React, useState} from 'react'
+import './sliderToggle.css'
 
 /*
 How it works: usestate to toggle on and off
@@ -16,32 +17,14 @@ TODO: pretty much all of it hahahah
  */
 
 
-function sliderToggle({name, leftToggle, rightToggle}) {
+function SliderToggle({name, leftToggle, rightToggle}) {
 
-    const [isToggled, setToggled] = useState(false)
+
   return (
-    <label >
-        <input type='checkbox' name={name} value={isToggled} style={() => {
-            if(isToggled){
-                return styles.on
-            }else{
-                return styles.off
-            }
-        }}/>
-    </label>
+    <div>
+
+    </div>
   )
 }
 
-const styles = {
-    container:{
-
-    },
-    on:{
-
-    },
-    off:{
-
-    }
-
-}
-export default sliderToggle
+export default SliderToggle
