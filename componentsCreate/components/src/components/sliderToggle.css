@@ -1,84 +1,50 @@
-.container{
+.container {
     display: flex;
     flex-flow: row nowrap;
     background-color: blueviolet;
     border: 1px solid black;
     border-radius: 4px;
     overflow: hidden;
-
     font-family: "Roboto", sans-serif;
     font-weight: 500;
     font-style: normal;
     text-transform: capitalize;
     width: 100%;
+    position: relative; 
 }
 
-.container input[type=checkbox]{
+/*This makes the checkbox invisible but should still be accesable */
+.container input[type=checkbox] {
     height: 0;
     width: 0;
     margin: 0;
     padding: 0;
 }
 
-.container:has(input[type=checkbox]:checked){
-    display: flex;
-    flex-flow: row-reverse nowrap;
-}
-
-/*When Checked */
-/* input:checked + .label{
+.switchLabel {
     background-color: black;
     color: white;
-    flex: 8;
+    flex: 1;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     height: 100%;
-
-} */
-
-input + .label{
-    background-color: black;
-    color: white;
-    flex: 8;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    height: 100%;
-
+    position: relative; 
 }
 
-
-/*On and Off Classes */
-.on{
+.container label.on,
+.container label.off {
     background-color: white;
     color: black;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    flex: 1;
-
+    padding: 0.5em;
+    position: absolute; 
+    top: 0;
+    transition: left 0.7s ease;
 }
 
-.off{
-    background-color: black;
-    color: white;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    flex: 1;
-
+.container label.on {
+    left: 0; 
 }
 
-
-/*Transition Animation */
-
-  
-@keyframes click {
-    from {
-      background-color: white;
-    }
-    to {
-      background-color: pink;
-    }
-  }
-
-  .clicked {
-    animation: click 0.5s forwards;
-  }
+.container label.off {
+    left: calc(100% - var(--element-width));
+}

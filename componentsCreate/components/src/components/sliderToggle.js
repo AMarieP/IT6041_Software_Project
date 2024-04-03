@@ -1,26 +1,23 @@
-import {React, useState} from 'react'
+import {React, useState, useRef, useEffect} from 'react'
 import './sliderToggle.css'
 
 /*
 How it works: usestate to toggle on and off
 useState changes styling on checkbox
-
-using CSS tutorials incl this on
-https://www.w3schools.com/howto/howto_css_switch.asp
-https://alvarotrigo.com/blog/toggle-switch-css/
-TODO: pretty much all of it hahahah
--reduce if/else to the shorthand for easier reading
--do all of the styling thus far
--probably sort the animation as well 
--finsih the todo
-
- */
+*/
 
 
-function SliderToggle({value, name, id}) {
+function SliderToggle({value, name, id, children}) {
 
     const [isToggled, setToggle] = useState(false)
-    const [classname, setClassname] = useState('')
+    const elementRef = useRef(null)
+    
+    /*Calcs the width of Off/On when toggled, this keeps our element responsive */
+    useEffect(() => {
+        const elementWidth = elementRef.current.offsetWidth;
+        document.documentElement.style.setProperty('--element-width', `${elementWidth}px`);
+    }, [isToggled]);
+
 
     
     /*Sets class and content of On/Off label */
@@ -28,14 +25,12 @@ function SliderToggle({value, name, id}) {
 
     
   return (
-    <div>
-
         <label className='container'>
-            <input type='checkbox' name='toggle' id='this-toggle' className={classname} value={value} onClick={() => setToggle(!isToggled)} />
-            <label class='label' for='this-toggle'>ThisSwitchName</label>
-            <label className={onOff} for='this-toggle'>{onOff}</label>
+            <input type='checkbox' name='toggle' id='this-toggle' value={value} onClick={() => setToggle(!isToggled)} />
+            <label className='switchLabel' for='this-toggle'>{children}</label>
+            <label className={onOff} for='this-toggle' ref={elementRef}>{onOff}</label>
         </label>
-    </div>
+
   )
 }
 
