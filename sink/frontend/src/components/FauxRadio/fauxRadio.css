@@ -1,0 +1,33 @@
+.fauxRadioContainer{
+    display: flex;
+    flex-flow: row-reverse nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    text-transform: lowercase;
+}
+
+/*Makes Checkbox Invisible */
+.fauxRadioContainer input[type=checkbox] {
+    height: 0;
+    width: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.checkmark{
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 1em;
+    height: 1em;
+    box-shadow: 1px 3px 3px lightgrey;
+}
+
+.fauxRadioContainer input:checked ~.checkmark{
+    background-color: black;
+}
+
