@@ -1,0 +1,84 @@
+.container{
+    display: flex;
+    flex-flow: row nowrap;
+    background-color: blueviolet;
+    border: 1px solid black;
+    border-radius: 4px;
+    overflow: hidden;
+
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    text-transform: capitalize;
+    width: 100%;
+}
+
+.container input[type=checkbox]{
+    height: 0;
+    width: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.container:has(input[type=checkbox]:checked){
+    display: flex;
+    flex-flow: row-reverse nowrap;
+}
+
+/*When Checked */
+/* input:checked + .label{
+    background-color: black;
+    color: white;
+    flex: 8;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    height: 100%;
+
+} */
+
+input + .label{
+    background-color: black;
+    color: white;
+    flex: 8;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    height: 100%;
+
+}
+
+
+/*On and Off Classes */
+.on{
+    background-color: white;
+    color: black;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    flex: 1;
+
+}
+
+.off{
+    background-color: black;
+    color: white;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    flex: 1;
+
+}
+
+
+/*Transition Animation */
+
+  
+@keyframes click {
+    from {
+      background-color: white;
+    }
+    to {
+      background-color: pink;
+    }
+  }
+
+  .clicked {
+    animation: click 0.5s forwards;
+  }

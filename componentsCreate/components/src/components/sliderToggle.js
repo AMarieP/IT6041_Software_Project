@@ -17,12 +17,24 @@ TODO: pretty much all of it hahahah
  */
 
 
-function SliderToggle({name, leftToggle, rightToggle}) {
+function SliderToggle({value, name, id}) {
 
+    const [isToggled, setToggle] = useState(false)
+    const [classname, setClassname] = useState('')
 
+    
+    /*Sets class and content of On/Off label */
+    const onOff = isToggled ? 'on' : 'off'
+
+    
   return (
     <div>
 
+        <label className='container'>
+            <input type='checkbox' name='toggle' id='this-toggle' className={classname} value={value} onClick={() => setToggle(!isToggled)} />
+            <label class='label' for='this-toggle'>ThisSwitchName</label>
+            <label className={onOff} for='this-toggle'>{onOff}</label>
+        </label>
     </div>
   )
 }
