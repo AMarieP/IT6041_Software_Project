@@ -1,4 +1,4 @@
-.container {
+.sliderContainer {
     display: flex;
     flex-flow: row nowrap;
     background-color: blueviolet;
@@ -14,7 +14,7 @@
 }
 
 /*This makes the checkbox invisible but should still be accesable */
-.container input[type=checkbox] {
+.sliderContainer input[type=checkbox] {
     height: 0;
     width: 0;
     margin: 0;
@@ -31,8 +31,8 @@
     position: relative; 
 }
 
-.container label.on,
-.container label.off {
+.sliderContainer label.on,
+.sliderContainer label.off {
     background-color: white;
     color: black;
     padding: 0.5em;
@@ -41,10 +41,10 @@
     transition: left 1s ease;
 }
 
-.container label.on {
+.sliderContainer label.on {
     left: 0; 
 }
 
-.container label.off {
+.sliderContainer label.off {
     left: calc(100% - var(--element-width));
 }

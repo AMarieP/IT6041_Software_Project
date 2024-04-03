@@ -25,7 +25,7 @@ function SliderToggle({value, toggleName, toggleId, children}) {
 
     
   return (
-        <label className='container'>
+        <label className='sliderContainer'>
             <input type='checkbox' name={toggleName} id={toggleId} value={value} onClick={() => setToggle(!isToggled)} />
             <label className='switchLabel' htmlFor={toggleId}>{children}</label>
             <label className={onOff} htmlFor={toggleId} ref={elementRef}>{onOff}</label>
