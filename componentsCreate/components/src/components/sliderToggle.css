@@ -38,7 +38,7 @@
     padding: 0.5em;
     position: absolute; 
     top: 0;
-    transition: left 0.7s ease;
+    transition: left 1s ease;
 }
 
 .container label.on {
