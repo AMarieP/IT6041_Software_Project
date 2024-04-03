@@ -21,12 +21,11 @@ function TextBox({id, name, thisHeight}) {
 
     },
     inputBox: {
-        border: '2px solid black',
-        padding: '0.4rem 2rem',
+        border: '1px solid black',
         boxShadow: 'inset 0px 2px 3px lightgrey',
         borderRadius: '4px',
         width: '100%', //Width should always be 100% parent
-        height: thisHeight
+        height: thisHeight //Height input by user
     }
 }
   return (
