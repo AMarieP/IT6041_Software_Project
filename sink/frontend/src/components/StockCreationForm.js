@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const StockForm = () => {
+const StockCreationForm = () => {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [images, setImages] = useState('')
@@ -75,7 +75,7 @@ const StockForm = () => {
 
 
     return (
-        <form className="stockForm">
+        <form className="StockCreationForm">
             <div className="leftSide">
                 <div className="stockDescription">
                     <h3>Description</h3>
@@ -145,11 +145,11 @@ const StockForm = () => {
             </div>
             <div className="finalButtons">
                 <button onSubmit={handelSubmit}>add stock</button>
-                <button onSubmit={handelUpdate}>delete stock</button>
-                <button onSubmit={handelDelete}>update stock</button>
+                <button onSubmit={handelUpdate}>update stock</button>
+                <button onSubmit={handelDelete}>delete stock</button>
             </div>
         </form>
     )
 }
 
-export default StockForm 
+export default StockCreationForm 
