@@ -1,4 +1,4 @@
-import StockCreationForm from '../components/StockCreationForm'
+import StockCreationForm from '../components/Forms/StockCreationForm'
 
 const StockCreate = () => {
 

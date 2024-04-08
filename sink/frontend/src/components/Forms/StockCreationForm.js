@@ -1,11 +1,11 @@
 import { useState } from "react";
 
 //importing components
-import SliderToggle from "./SliderToggle/sliderToggle"
-import BoxWithDropshadow from "./boxWithDropshadow"
-import TextBox from "./textBox"
-import TextArea from "./textArea"
-import FauxRadio from "./FauxRadio/fauxRadio";
+import SliderToggle from "../SliderToggle/sliderToggle"
+import BoxWithDropshadow from "../boxWithDropshadow"
+import TextBox from "../textBox"
+import TextArea from "../textArea"
+import FauxRadio from "../FauxRadio/fauxRadio";
 
 const StockCreationForm = () => {
     const [name, setName] = useState('')
@@ -54,20 +54,24 @@ const StockCreationForm = () => {
     return (
         <form onSubmit={handelSubmit} style={styles.StockCreationForm}>
             <div style={styles.leftSide}>
-                <BoxWithDropshadow style={styles.stockDescription}>
+                <BoxWithDropshadow>
                     <h3>Description</h3>
-                    <TextBox
-                        id={'name'}
-                        name={'Name:'}
-                        value={name} 
-                        thisHeight={'20px'}
-                        onChange={(e) => setName(e.target.value)}
-                    />
-                    <TextArea
-                        name={'description:'}
-                        onChange={(e) => setDescription(e.target.value)}
-                        value={description}
-                    />
+                    <div style={styles.stockDescription}>
+                        <TextBox
+                            id={'name'}
+                            name={'Name:'}
+                            value={name} 
+                            thisHeight={'40px'}
+                            onChange={(e) => setName(e.target.value)}
+                        />
+                        <TextArea
+                            formId={'discription'}
+                            name={'description:'}
+                            thisHeight={'120px'}
+                            onChange={(e) => setDescription(e.target.value)}
+                            value={description}
+                        />
+                    </div>
                 </BoxWithDropshadow>
                 
                 <BoxWithDropshadow style={styles.images}>
@@ -78,23 +82,31 @@ const StockCreationForm = () => {
                         value={images}
                     />
                 </BoxWithDropshadow>
-                <BoxWithDropshadow style={styles.details}>
+                <BoxWithDropshadow >
                     <h3>Details</h3>
-                    <TextBox 
-                        name={'dimensions:'}
-                        onChange={(e) => setDimensions(e.target.value)}
-                        value={dimensions}
-                    />
-                    <TextBox 
-                        name={'medium:'}
-                        onChange={(e) => setMedium(e.target.value)}
-                        value={medium}
-                    />
-                    <TextBox 
-                        name={'artist:'}
-                        onChange={(e) => setArtist(e.target.value)}
-                        value={artist}
-                    />
+                    <div style={styles.details}>
+                        <TextBox 
+                            id={'dimensions:'}
+                            name={'dimensions:'}
+                            onChange={(e) => setDimensions(e.target.value)}
+                            value={dimensions}
+                            thisHeight={"40px"}
+                        />
+                        <TextBox 
+                            id={'medium:'}
+                            name={'medium:'}
+                            onChange={(e) => setMedium(e.target.value)}
+                            value={medium}
+                            thisHeight={"40px"}
+                        />
+                        <TextBox 
+                            id={'artist:'}
+                            name={'artist:'}
+                            onChange={(e) => setArtist(e.target.value)}
+                            value={artist}
+                            thisHeight={"40px"}
+                        />
+                    </div>
                 </BoxWithDropshadow>
             </div>
             <div style={styles.rightSide}>
@@ -137,13 +149,19 @@ const styles = {
         flexDirection:'column',
         gap:'20px'
     },
-    stockDescription:{
+    stockDescription:{  
+        display: "flex",
+        flexDirection: "column",
+        gap: "20px" 
     },
+
     images:{
 
     },
     details:{
-
+        display: "flex",
+        flexDirection: "column",
+        gap: "20px" 
     },
     rightSide:{
         display:'flex',

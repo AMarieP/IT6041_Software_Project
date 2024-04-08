@@ -1,6 +1,7 @@
 import { Link, useMatch, useResolvedPath } from "react-router-dom"
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useLogout } from '../hooks/useLogout'
+import { useState,useEffect } from "react";
 
 const Navbar = () => {
     const { user } = useAuthContext()
@@ -10,8 +11,25 @@ const Navbar = () => {
         logout()
     }
 
+    const [hasScrolled, setHasScrolled] = useState(false);
+
+    const handleScroll = () => {
+        if (window.scrollY > 0) {
+          setHasScrolled(true);
+        } else {
+          setHasScrolled(false);
+        }
+      };
+
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+          window.removeEventListener("scroll", handleScroll);
+        };
+      }, []);
+
     return (
-        <nav style={styles.nav}>
+        <nav style={{ ...styles.nav, ...(hasScrolled && styles.navScrolled) }}>
             <Link to = "/Home" style={styles.title}>
                 Sink
             </Link>
@@ -58,11 +76,15 @@ const styles = {
     nav:{
         display: 'flex',
         flexDirection:'column',
-        width:'25%',
+        width:'20%',
         height:'100vh',
         border:'2px solid black',
         paddingTop:'10px',
         color:'black',
+        position: "fixed",
+    },
+    navScrolled: {
+        position: "fixed",
     },
     title:{
         fontSize:'30px',
