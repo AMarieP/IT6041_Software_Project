@@ -20,7 +20,7 @@ const Navbar = () => {
                 <CustomLink to="/ViewFandM">Frames And Matteboards</CustomLink>
                 {user && <CustomLink to="/StockCreate">Add new stock</CustomLink>}
             </ul>
-            {user && <button onClick={handelLogout}>logout</button>}
+            {user && <button onClick={handelLogout}>logout</button>} {/* should use button component here */}
         </nav>
     )
 }
@@ -58,19 +58,19 @@ const styles = {
     nav:{
         display: 'flex',
         flexDirection:'column',
-        alignItems: 'flex-start',
         width:'15%',
         height:'100vh',
         border:'2px solid black',
-        paddingLeft:'10px',
         paddingTop:'10px',
-        
+        color:'black',
     },
     title:{
         fontSize:'30px',
         textDecoration:'none',
         marginBottom:'20px',
         marginLeft:'5px',
+        color:'inherit',
+        alignSelf:'center',
     },
     ul:{
         padding:'0',
@@ -78,26 +78,31 @@ const styles = {
         listStyle: 'none',
         display: 'flex',
         flexDirection:'column',
-        alignItems: 'flex-start',
+        alignItems: 'flex-end',
         width: '100%',
     },
     li:{
         width: '100%',
+        textAlign: 'right',
     },
     link:{
         display:'flex',
+        justifyContent: 'flex-end',
+        alignItems:'center',
         textDecoration:'none',
         transition: 'background-color 0.3s ease',
-        padding: '8px 0',
-        width: '100%',
+        padding: '8px 5px',
+        width: 'calc(100% - 10px)',
+        color: 'inherit',
     },
     activeLink: {
-        backgroundColor: 'grey', 
-        width: '100%',
+        backgroundColor: 'black', 
+        width: 'calc(100% - 10px)',
+        color: 'white'
     },
     hoverLink: {
         backgroundColor: 'lightgray',
-        width: '100%',
+        width: 'calc(100% - 10px)',
     },
     
     
