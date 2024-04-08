@@ -9,7 +9,7 @@ and height can be altered using 'thisHeight' props
 
 */
 
-function TextArea({name, thisHeight, formId}) {
+function TextArea({name, thisHeight, formId, value='', onChange}) {
 
   const styles = {
     container: {
@@ -34,7 +34,14 @@ function TextArea({name, thisHeight, formId}) {
   return (
     <div style={styles.container}>
     <label htmlFor={name}>{name}</label>
-    <textarea style={styles.inputBox} type="text" form={formId} name={name}/>
+    <textarea 
+      style={styles.inputBox} 
+      type="text" 
+      form={formId} 
+      name={name}
+      value={value}
+      onChange={onChange}
+      />
     </div>
 
   )
