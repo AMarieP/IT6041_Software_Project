@@ -58,7 +58,7 @@ const styles = {
     nav:{
         display: 'flex',
         flexDirection:'column',
-        width:'15%',
+        width:'25%',
         height:'100vh',
         border:'2px solid black',
         paddingTop:'10px',

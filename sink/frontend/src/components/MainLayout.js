@@ -3,7 +3,7 @@ import Content from './Content';
 
 const MainLayout = ({ children }) => {
     return (
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex'}}>
             <Navbar />
             <Content>{children}</Content>
         </div>

@@ -1,7 +1,14 @@
 import { useState } from "react";
 
+//importing components
+import SliderToggle from "./SliderToggle/sliderToggle"
+import BoxWithDropshadow from "./boxWithDropshadow"
+import TextBox from "./textBox"
+import TextArea from "./textArea"
+import FauxRadio from "./FauxRadio/fauxRadio";
+
 const StockCreationForm = () => {
-    const [title, setTitle] = useState('')
+    const [title, setTitle] = useState('test')
     const [description, setDescription] = useState('')
     const [images, setImages] = useState('')
     const [dimensions, setDimensions] = useState('')
@@ -11,19 +18,20 @@ const StockCreationForm = () => {
     const [archived, setArchived] = useState('')
     const [error, setError] = useState('')
 
+
     const handelSubmit = async (e) => {
         e.preventDefault()
 
-        const stock = {title,description,images,dimensions,medium,artist,status,archived}
+        const stock = {title,description,dimensions,medium,artist}
 
-        const response = await fetch('/api/stock', {
+        const response = await fetch('/api/stock/', {
             method:'POST',
             body: JSON.stringify(stock),
             headers: {
                 'content-type' : 'application/json'
             }
         })
-        const json = await responce.json()
+        const json = await response.json()
 
         if (!response.ok) {
             setError(json.error)
@@ -38,118 +46,119 @@ const StockCreationForm = () => {
             setMedium('')
             setArtist('')
             setStatus('')
-            setArchived('')
+            setArchived(true)
         }
     }
-    // wont work currently as i need to figure out how to pass the id 
-    // const handelUpdate = async (e) => {
-    //     e.preventDefault()
-
-    //     const stock = {title,description,images,dimensions,medium,artist,status,archived}
-
-    //     const response = await fetch('/api/stock', {
-    //         method:'PATCH',
-    //         body: JSON.stringify(stock),
-    //         headers: {
-    //             'content-type' : 'application/json'
-    //         }
-    //     })
-    //     const json = await responce.json()
-
-    //     if (!response.ok) {
-    //         setError(json.error)
-    //     }
-    //     if (response.ok) {
-    //         setError(null)
-    //         console.log('new stock added', json)
-    //         setTitle('')
-    //         setDescription('')
-    //         setImages('')
-    //         setDimensions('')
-    //         setMedium('')
-    //         setArtist('')
-    //         setStatus('')
-    //         setArchived('')
-    //     }
-    // }
 
 
     return (
-        <form className="StockCreationForm">
-            <div className="leftSide">
-                <div className="stockDescription">
+        <form onSubmit={handelSubmit} style={styles.StockCreationForm}>
+            <div style={styles.leftSide}>
+                <BoxWithDropshadow style={styles.stockDescription}>
                     <h3>Description</h3>
-                    <label>Title:</label>
-                    <input 
-                        type="text"
+                    <TextArea
+                        name={'Title:'}
                         onChange={(e) => setTitle(e.target.value)}
                         value={title} 
                     />
-                    <label>description:</label>
-                    <input
-                        type="text"
+                    <TextArea
+                        name={'description:'}
                         onChange={(e) => setDescription(e.target.value)}
                         value={description}
                     />
-                </div>
+                </BoxWithDropshadow>
                 
-                <div className="images">
+                <BoxWithDropshadow style={styles.images}>
                     <h3>Images</h3> 
                     <input 
                         type="image"
                         onChange={(e) => setImages(e.target.value)}
                         value={images}
                     />
-                </div>
-                <div className="details">
+                </BoxWithDropshadow>
+                <BoxWithDropshadow style={styles.details}>
                     <h3>Details</h3>
-                    <label>dimensions:</label>
-                    <input 
-                        type="text"
+                    <TextBox 
+                        name={'dimensions:'}
                         onChange={(e) => setDimensions(e.target.value)}
                         value={dimensions}
                     />
-                    <label>medium:</label>
-                    <input 
-                        type="text"
+                    <TextBox 
+                        name={'medium:'}
                         onChange={(e) => setMedium(e.target.value)}
                         value={medium}
                     />
-                    <label>artist:</label>
-                    <input 
-                        type="text"
+                    <TextBox 
+                        name={'artist:'}
                         onChange={(e) => setArtist(e.target.value)}
                         value={artist}
                     />
-                </div>
+                </BoxWithDropshadow>
             </div>
-            <div className="rightSide">
-                <div className="status">
+            <div style={styles.rightSide}>
+                <BoxWithDropshadow style={styles.status}>
                     <h3>Status</h3>
-                    {/* this is where the differnt options for status will be desplayed. use radio instead of input */}
-                    <input 
-                        type="checkbox"
+                    <FauxRadio 
+                        children={'sold'}
                         onChange={(e) => setStatus(e.target.value)}
                         value={status}
                     />
-                </div>
-                <div className="archived">
+                </BoxWithDropshadow>
+                <BoxWithDropshadow style={styles.archived}>
                     <h3>Archived</h3>
-                    {/* this is where the slider toggle will be used */}
-                    <input 
-                        type="radio"
+                    <SliderToggle 
+                        children={'archived'}
+                        toggleId={'archived'}
+                        toggleName={'archived'}
                         onChange={(e) => setArchived(e.target.value)}
                         value={archived}
                     />
-                </div>
+                </BoxWithDropshadow>
+                <BoxWithDropshadow style={styles.finalButtons}>
+                    <button >add stock</button>
+                </BoxWithDropshadow>
+                {error && <div>{error}</div>}
             </div>
-            <div className="finalButtons">
-                <button onSubmit={handelSubmit}>add stock</button>
-                <button onSubmit={handelUpdate}>update stock</button>
-                <button onSubmit={handelDelete}>delete stock</button>
-            </div>
+
         </form>
     )
+}
+
+const styles = {
+    StockCreationForm:{
+        display:'flex',
+        gap:'20px'
+    },
+    leftSide:{
+        display:'flex',
+        width:'70%',
+        flexDirection:'column',
+        gap:'20px'
+    },
+    stockDescription:{
+    },
+    images:{
+
+    },
+    details:{
+
+    },
+    rightSide:{
+        display:'flex',
+        width:'30%',
+        flexDirection:'column',
+        gap:'20px'
+    },
+    status:{
+
+    },
+    archived:{
+
+    },
+    finalButtons:{
+
+    },
+
 }
 
 export default StockCreationForm 

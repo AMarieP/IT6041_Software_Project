@@ -1,9 +1,11 @@
-
+import StockCreationForm from '../components/StockCreationForm'
 
 const StockCreate = () => {
 
 
-    return <h1>Stock create</h1>
+    return <>
+        <StockCreationForm/>
+    </>
 }
 
 export default StockCreate
