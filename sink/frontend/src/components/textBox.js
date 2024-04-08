@@ -30,7 +30,7 @@ function TextBox({id, name, thisHeight}) {
 }
   return (
     <div style={styles.container}>
-    <label for={name}>{name}</label>
+    <label htmlFor={name}>{name}</label>
     <input style={styles.inputBox} type="text" id={id} name={name}/>
     </div>
 

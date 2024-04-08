@@ -33,7 +33,7 @@ function TextArea({name, thisHeight, formId}) {
 }
   return (
     <div style={styles.container}>
-    <label for={name}>{name}</label>
+    <label htmlFor={name}>{name}</label>
     <textarea style={styles.inputBox} type="text" form={formId} name={name}/>
     </div>
 
