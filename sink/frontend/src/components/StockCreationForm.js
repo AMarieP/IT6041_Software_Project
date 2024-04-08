@@ -8,7 +8,7 @@ import TextArea from "./textArea"
 import FauxRadio from "./FauxRadio/fauxRadio";
 
 const StockCreationForm = () => {
-    const [title, setTitle] = useState('test')
+    const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [images, setImages] = useState('')
     const [dimensions, setDimensions] = useState('')
@@ -22,8 +22,8 @@ const StockCreationForm = () => {
     const handelSubmit = async (e) => {
         e.preventDefault()
 
-        const stock = {title,description,dimensions,medium,artist}
-
+        const stock = {name,description,dimensions,medium,artist}
+        console.log(stock)
         const response = await fetch('/api/stock/', {
             method:'POST',
             body: JSON.stringify(stock),
@@ -39,7 +39,7 @@ const StockCreationForm = () => {
         if (response.ok) {
             setError(null)
             console.log('new stock added', json)
-            setTitle('')
+            setName('')
             setDescription('')
             setImages('')
             setDimensions('')
@@ -56,10 +56,12 @@ const StockCreationForm = () => {
             <div style={styles.leftSide}>
                 <BoxWithDropshadow style={styles.stockDescription}>
                     <h3>Description</h3>
-                    <TextArea
-                        name={'Title:'}
-                        onChange={(e) => setTitle(e.target.value)}
-                        value={title} 
+                    <TextBox
+                        id={'name'}
+                        name={'Name:'}
+                        value={name} 
+                        thisHeight={'20px'}
+                        onChange={(e) => setName(e.target.value)}
                     />
                     <TextArea
                         name={'description:'}
