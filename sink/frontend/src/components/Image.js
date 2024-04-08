@@ -1,4 +1,5 @@
 import React from 'react'
+import ButtonBlack from './buttons/buttonBlack'
 
 const testList = [
     {
@@ -41,7 +42,7 @@ function ImagesBackendComponent({im}) {
     
     const images = testList.map((img) => {
         return(
-            <img src={img.url} alt={img.alt} key={img.order} style={styles.image}/>
+            <div style={img.order == 1 ? styles.mainImg : styles.imgContainer}><img src={img.url} alt={img.alt} key={img.order} style={styles.image}/></div>
         )
         
     })
@@ -50,18 +51,9 @@ function ImagesBackendComponent({im}) {
       <div style={styles.container}>
         <h1 style={styles.heading}>images</h1>
         <div style={styles.imagesContainer}>
-            <div style={styles.mainImg}></div>
-            <div style={styles.imgContainer}></div>
-            <div style={styles.imgContainer}></div>
-            <div style={styles.imgContainer}></div>
-            <div style={styles.imgContainer}></div>
-            <div style={styles.imgContainer}></div>
-            <div style={styles.imgContainer}></div>
-            <div style={styles.imgContainer}></div>
-            <div style={styles.imgContainer}></div>
-            <div style={styles.imgContainer}></div>
-            <div style={styles.imgContainer}></div>
+            {images}
         </div>
+        <ButtonBlack style={styles.button}>add new image</ButtonBlack>
       </div>
     )
   }
@@ -98,20 +90,34 @@ function ImagesBackendComponent({im}) {
         gridColumnEnd: 3,
         gridRowStart: 1,
         gridRowEnd: 3,
-        backgroundColor: 'aqua',
         border: '1px solid black',
-        height: '100%',
-        width: '100%'
+        height: 'calc(((50vw / 3) * 2) - 10px)',
+        width: '100%',
+        overflow: 'hidden',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'lightgrey',
+
     },
 
     imgContainer: {
-        backgroundColor: 'pink',
         border: '1px solid black',
         height: 'calc((50vw / 3) - 10px)',
-        width: 'calc((50vw / 3) - 10px)'
+        width: 'calc((50vw / 3) - 10px)',
+        overflow: 'hidden',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'lightgrey',
     },
 
     image: {
+        height: '100%',
+    },
+
+    button: {
+        width: '100%'
 
     }
 
