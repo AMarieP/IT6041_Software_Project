@@ -2,6 +2,7 @@ import React from 'react'
 
 //IMPORTANT: FUntionality of finding main image may change
 
+//For testing
 const testProduct = {
     "name": "Little Dancer of Fourteen Years",
     "date": "1881",
@@ -33,14 +34,14 @@ const testProduct = {
   }
   
 
-function ProductCard({}) {
+function ProductCard({product}) {
 
     //Find main image
-    const mainImage = testProduct.images.filter(image => image.order === 1)
+    const mainImage = product.images.filter(image => image.order === 1)
 
     //Space and comma added to mediums array if needed
     const mediums = ()  => {
-         return testProduct.medium.length > 1 ? testProduct.medium.join(', ') : testProduct.medium
+         return product.medium.length > 1 ? product.medium.join(', ') : testProduct.medium
     }
 
     console.log(mediums())
@@ -49,19 +50,19 @@ function ProductCard({}) {
         <img style={styles.image} src={mainImage[0].url}/>
         <div style={styles.textContainer}>
             <div style={styles.textLeft}>
-                <p>{testProduct.name}</p>
-                <p>{mediums()}</p>
-                <p>{testProduct.dimensions}</p>
+                <h1 style={styles.head} >{product.name}</h1>
+                <p style={styles.medium} >{mediums()}</p>
+                <p style={styles.dimensions} >{product.dimensions}</p>
 
             </div>
             <div style={styles.textRight}>
-                <p>{testProduct.artist}</p>
-                <p>{testProduct.date}</p>
+                <h1 style={styles.artist} >{product.artist}</h1>
+                <p style={styles.date} >{product.date}</p>
 
             </div>
         </div>
         <div style={styles.status}>
-            <p>{testProduct.status}</p>
+            <i>{product.status}</i>
         </div>
     </div>
   )
@@ -69,9 +70,11 @@ function ProductCard({}) {
 
 const styles = {
     container: {
-        width: '30vw',
+        width: '30%',
         padding: '1em',
-        backgroundColor: 'pink'
+        backgroundColor: 'white',
+        boxShadow: '2px 6px 5px lightgrey',
+
     },
     image: {
         width: '100%',
@@ -79,15 +82,85 @@ const styles = {
     },
     textContainer: {
         display: 'flex',
-        flexFlow: 'row nowrap'
+        flexFlow: 'row nowrap',
+        // backgroundColor: 'bisque',
+        justifyContent: 'space-between',
+        alignItems: 'flex-start',
     },
     textLeft: {
+        // backgroundColor: 'purple',
+        flex: '1.5',
+        textAlign: 'left',
+
 
     },
     textRight: {
+        // backgroundColor: 'grey',
+        flex: '1',
+        textAlign: 'right',
+
 
     },
     status: {
+        //Light Italic
+        fontFamily: 'Roboto',
+        fontWeight: 400,
+        fontStyle: 'italic',
+        margin: '1em 0'
+    },
+
+    //Purely text styling
+    head: {
+        //Roboto Medium
+        fontFamily: 'Roboto',
+        fontWeight: 500,
+        fontStyle: 'normal',
+        fontSize: '1.2em',
+        marginBottom: 0,
+
+        
+    },
+
+    dimensions: {
+        //Roboto Medium
+        fontFamily: 'Roboto',
+        fontWeight: 500,
+        fontStyle: 'normal',
+        textTransform: 'lowercase',
+        fontSize: '0.7rem',
+        margin: 0,
+
+
+    },
+    medium: {
+        //Roboto light
+        fontFamily: 'Roboto',
+        fontWeight: 300,
+        fontStyle: 'normal',
+        fontSize: '0.8rem',
+        textTransform: 'lowercase',
+        margin: 0,
+
+    },
+    date: {
+        //Roboto light
+        fontFamily: 'Roboto',
+        fontWeight: 300,
+        fontStyle: 'normal',
+        fontSize: '1.2rem',
+        marginTop: '0',
+
+    },
+    artist: {
+        //Roboto Medium
+        fontFamily: 'Roboto',
+        fontWeight: 500,
+        fontStyle: 'normal',
+        fontSize: '1.1em',
+        textTransform: 'lowercase',
+        marginBottom: '0'
+
+
 
     },
 }
