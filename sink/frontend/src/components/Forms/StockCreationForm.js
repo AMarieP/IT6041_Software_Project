@@ -5,7 +5,8 @@ import SliderToggle from "../SliderToggle/sliderToggle"
 import BoxWithDropshadow from "../boxWithDropshadow"
 import TextBox from "../textBox"
 import TextArea from "../textArea"
-import FauxRadio from "../FauxRadio/fauxRadio";
+import FauxRadio from "../FauxRadio/fauxRadio"
+import ButtonBlack from "../buttons/buttonBlack";
 
 const StockCreationForm = () => {
     const [name, setName] = useState('')
@@ -52,7 +53,7 @@ const StockCreationForm = () => {
 
 
     return (
-        <form onSubmit={handelSubmit} style={styles.StockCreationForm}>
+        <form style={styles.StockCreationForm}>
             <div style={styles.leftSide}>
                 <BoxWithDropshadow>
                     <h3>Description</h3>
@@ -128,8 +129,13 @@ const StockCreationForm = () => {
                         value={archived}
                     />
                 </BoxWithDropshadow>
-                <BoxWithDropshadow style={styles.finalButtons}>
-                    <button >add stock</button>
+                <BoxWithDropshadow >
+                    <div style={styles.finalButtons}>
+                        <ButtonBlack
+                            children={'Save'}
+                            onClick={handelSubmit}
+                        />
+                    </div>
                 </BoxWithDropshadow>
                 {error && <div>{error}</div>}
             </div>
@@ -176,7 +182,8 @@ const styles = {
 
     },
     finalButtons:{
-
+        display:'flex',
+        flexDirection:'column',
     },
 
 }

@@ -2,6 +2,7 @@ import { Link, useMatch, useResolvedPath } from "react-router-dom"
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useLogout } from '../hooks/useLogout'
 import { useState,useEffect } from "react";
+import ButtonBlack from "./buttons/buttonBlack";
 
 const Navbar = () => {
     const { user } = useAuthContext()
@@ -38,7 +39,9 @@ const Navbar = () => {
                 <CustomLink to="/ViewFandM">Frames And Matteboards</CustomLink>
                 {user && <CustomLink to="/StockCreate">Add new stock</CustomLink>}
             </ul>
-            {user && <button onClick={handelLogout}>logout</button>} {/* should use button component here */}
+            <div style={styles.logoutButton}>
+                {user && <ButtonBlack onClick={handelLogout} >Logout</ButtonBlack>}
+            </div>
         </nav>
     )
 }
@@ -80,7 +83,6 @@ const styles = {
         height:'100vh',
         border:'2px solid black',
         paddingTop:'10px',
-        color:'black',
         position: "fixed",
     },
     navScrolled: {
@@ -91,7 +93,7 @@ const styles = {
         textDecoration:'none',
         marginBottom:'20px',
         marginLeft:'5px',
-        color:'inherit',
+        color:'black',
         alignSelf:'center',
     },
     ul:{
@@ -113,18 +115,23 @@ const styles = {
         alignItems:'center',
         textDecoration:'none',
         transition: 'background-color 0.3s ease',
-        padding: '8px 5px',
-        width: 'calc(100% - 10px)',
-        color: 'inherit',
+        padding: '8px 10px',
+        width: 'calc(100% - 20px)',
+        color:'black',
     },
     activeLink: {
         backgroundColor: 'black', 
-        width: 'calc(100% - 10px)',
+        width: 'calc(100% - 20px)',
         color: 'white'
     },
     hoverLink: {
         backgroundColor: 'lightgray',
-        width: 'calc(100% - 10px)',
+        width: 'calc(100% - 20px)',
+    },
+    logoutButton: {
+        display:'flex',
+        flexDirection:'column',
+        marginTop:'auto'
     },
     
     
