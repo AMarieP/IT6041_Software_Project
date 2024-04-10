@@ -7,7 +7,7 @@ Action is fed through OnClick prop
 
 function ButtonBlack({children, onClick}) {
   return (
-    <button style={styles.button} onClick={() => onClick}>
+    <button style={styles.button} onClick={onClick}>
         <p>{children}</p>
     </button>
   )
