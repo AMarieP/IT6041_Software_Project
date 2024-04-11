@@ -1,8 +1,11 @@
+import { useState } from "react"
+
 import BoxWithDropshadow from "../components/boxWithDropshadow"
 import TextBox from "../components/textBox"
 import FauxRadio from "../components/FauxRadio/fauxRadio"
 
 const ViewStock = () => {
+    const [search, setSearch] = useState('')
 
 
     return (
@@ -10,13 +13,20 @@ const ViewStock = () => {
             <div>
                 <h1>My Stock</h1>
                 <BoxWithDropshadow>
-                    <TextBox/>
-                    <div styles>
-                        <FauxRadio/>
-                        <FauxRadio/>
-                        <FauxRadio/>
-                        <FauxRadio/>
-                        <FauxRadio/>
+                    <TextBox                    
+                        id='search'
+                        type="text"
+                        name='Search:'
+                        onChange={(e) => setSearch(e.target.value)}
+                        value={search}
+                        thisHeight={'35px'}                    
+                    />
+                    <div style={styles.radioBtns}>
+                        <FauxRadio radId={'archived'} radName={'archived'} radValue={'archived'} children={'archived'}/>
+                        <FauxRadio radId={'under negotiation'} radName={'under negotiation'} radValue={'under negotiation'} children={'under negotiation'} />
+                        <FauxRadio radId={'in gallery'} radName={'in gallery'} radValue={'in gallery'} children={'in gallery'}/>
+                        <FauxRadio radId={'sold'} radName={'sold'} radValue={'sold'} children={'sold'}/>
+                        <FauxRadio radId={'listed'} radName={'listed'} radValue={'listed'} children={'listed'}/>
                     </div>
                 </BoxWithDropshadow>
             </div>
@@ -34,3 +44,13 @@ const ViewStock = () => {
 }
 
 export default ViewStock
+
+const styles = {
+    radioBtns:{
+        display:'flex',
+        width:'100%',
+        justifyContent:'space-between',
+        marginTop:'25px'
+        
+    },
+}
