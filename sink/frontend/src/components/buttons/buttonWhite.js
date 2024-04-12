@@ -5,9 +5,9 @@ Label/ Words on button are children prop
 Action is fed through OnClick prop
  */
 
-function ButtonWhite({children, onClick}) {
+function ButtonWhite({children, onClick, type}) {
   return (
-    <button style={styles.button} onClick={onClick}>
+    <button style={styles.button} onClick={onClick} type={type}>
         <p>{children}</p>
     </button>
   )
