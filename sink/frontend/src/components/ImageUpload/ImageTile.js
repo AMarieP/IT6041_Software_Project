@@ -3,46 +3,25 @@ import ButtonBlack from '../buttons/buttonBlack'
 import ImageForm from './ImageForm'
 
 /*
-IMAGE INPUT: COmponent to allow users to input, edit and delete images int heir listing.
+IMAGE INPUT: 
+Component to allow users to input, edit and delete images held 
+in their listing. 
+
+Function:
+Add new image with button
+Update an existing image by clicking on it
+Delete an image in the pop-up modal
+
+To Add:
+Handling for 'main' image
+
+To Use: 
+State is managed in parent component passed through onImageListChange
 
 */
 
-// const testList = [
-//     {
-//       "name": "Front Left View",
-//       "alt": "Front Left Angle view of Little Dancer of Fourteen Years",
-//       "url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/196439/1781283/main-image",
-//       "order": 1
-//     },
-//     {
-//       "name": "Straight On View",
-//       "alt": "Straight On view of Little Dancer of Fourteen Years",
-//       "url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/196439/1781282/main-image",
-//       "order" : 2
-//     },
-//     {
-//       "name": "Right Side View",
-//       "alt": "Right side view of Little Dancer of Fourteen Years",
-//       "url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/196439/1781284/main-image",
-//       "order": 3
-//     },
-//     {
-//       "name": "Back View",
-//       "alt": "Back view of Little Dancer of Fourteen Years",
-//       "url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/196439/1781285/main-image",
-//       "order": 4
-//     },
-//     {
-//       "name": "Left Side View",
-//       "alt": "Left side view of Little Dancer of Fourteen Years",
-//       "url": "https://collectionapi.metmuseum.org/api/collection/v1/iiif/196439/1781286/main-image",
-//       "order": 5
-//     },
 
-//   ]
-
-
-function ImagesBackendComponent({imageList}) {
+function ImagesBackendComponent({imageList, onImageListChange}) {
   
   const emptyImage = {
     "name": "",
@@ -110,9 +89,11 @@ function ImagesBackendComponent({imageList}) {
     
     closeModal();
   }
+
+
   
 
-  //Gets the image list and maps
+    //Gets the image list and maps
     const images = thisImageList.map((img) => {
       
         return(
@@ -141,7 +122,7 @@ function ImagesBackendComponent({imageList}) {
   const styles = {
     container: {
         width: 'calc(50vw - 30px)',
-        minHeight: '100vh',
+        minHeight: '50vh',
         padding: '20px',
         border: '1px solid black',
         boxShadow: '4px 4px 5px lightgrey',    

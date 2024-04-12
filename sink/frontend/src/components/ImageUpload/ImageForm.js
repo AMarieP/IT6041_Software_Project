@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import TextBox from '../textBox'
 import ButtonBlack from '../buttons/buttonBlack'
 import ButtonWhite from '../buttons/buttonWhite'
@@ -6,12 +6,17 @@ import BoxWithDropShadow from '../boxWithDropshadow'
 import SliderToggle from '../SliderToggle/sliderToggle'
 
 
-/* IMGAE FORM: 
+/* IMAGE FORM: 
 This is a modal which pops up when an image is selected for editing, 
 or create new image is selected.
-This allows users to upload , edit or delete an image via a URL.
 
-No error handling or anything done yet
+User can input alt text, name, and URL for an image.
+
+Has buttons to allow for save, delete and close.
+
+Functionality is passed down from parent component.
+
+Todo: Add Main Image selection & data validation
 
 */
 
