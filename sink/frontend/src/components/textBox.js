@@ -31,7 +31,7 @@ function TextBox({id, name, thisHeight, value}) {
 }
   return (
     <div style={styles.container}>
-    <label for={name}>{name}</label>
+    <label htmlFor={id}>{name}</label>
     <input style={styles.inputBox} type="text" id={id} name={name} defaultValue={value}/>
     </div>
 
