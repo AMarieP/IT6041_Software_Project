@@ -1,19 +1,33 @@
-import React from 'react'
+import React, {useState} from 'react'
 import TextBox from '../textBox'
 import ButtonBlack from '../buttons/buttonBlack'
 import ButtonWhite from '../buttons/buttonWhite'
 import BoxWithDropShadow from '../boxWithDropshadow'
+import SliderToggle from '../SliderToggle/sliderToggle'
 
 
 /* IMGAE FORM: 
-This is a modal which pops up when an image is selected (or create new image is selected).
-This allows users to upload , edit or delete an image. */
+This is a modal which pops up when an image is selected for editing, 
+or create new image is selected.
+This allows users to upload , edit or delete an image via a URL.
 
-function ImageForm({ onClose, activeImg}) {
+No error handling or anything done yet
 
-  //Preview Functionality: 
-  //Update src of the image when URL changes
+*/
+
+function ImageForm({onClose, onSave, onDelete, activeImg}) {
   
+  //Handle form submission by passing new form to onSave function
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+    const formJson = Object.fromEntries(formData.entries());
+    
+    onSave(formJson)
+  }
+
 
 
     
@@ -21,17 +35,17 @@ function ImageForm({ onClose, activeImg}) {
     <div style={styles.container}>
       <BoxWithDropShadow>
         <h2>add image by url:</h2>
-        <form>
-          <TextBox id={'imageName'} name={'img name'} defaultValue={activeImg.name}></TextBox>
-          <TextBox id={'imageAlt'} name={'alt text'} defaultValue={activeImg.alt}>{activeImg.alt}</TextBox>
-          <TextBox id={'imageUrl'} name={'url'} defaultValue={activeImg.url}>{activeImg.url}</TextBox>
+        <form id="form" onSubmit={handleSubmit}>
+          <TextBox id={'imageName'} name={'name'} defaultValue={activeImg.name}></TextBox>
+          <TextBox id={'imageAlt'} name={'alt'} defaultValue={activeImg.alt}></TextBox>
+          <TextBox id={'imageUrl'} name={'url'} defaultValue={activeImg.url}></TextBox>
+          {/* <SliderToggle toggleName={'order'} toggleId={'imageOrder'} defaultChecked={true}>Main Image</SliderToggle> */}
           <br/>
           <div style={styles.buttonContainer}>
-            <ButtonBlack onClick={onClose}>save</ButtonBlack>
-            <ButtonWhite onClick={onClose}>delete</ButtonWhite>
-            <ButtonWhite onClick={onClose}>close</ButtonWhite>
+            <ButtonBlack type="submit">save</ButtonBlack>
+            <ButtonWhite type="button" onClick={onDelete}>delete</ButtonWhite>
+            <ButtonWhite type="button" onClick={onClose}>close</ButtonWhite>
           </div>
-
         </form>
       </BoxWithDropShadow>
     </div>
