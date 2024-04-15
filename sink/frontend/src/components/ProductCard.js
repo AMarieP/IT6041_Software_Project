@@ -41,7 +41,7 @@ function ProductCard({product}) {
 
     //Space and comma added to mediums array if needed
     const mediums = ()  => {
-         return product.medium.length > 1 ? product.medium.join(', ') : testProduct.medium
+         return product.medium.length > 1 ? product.medium.join(', ') : product.medium
     }
 
     console.log(mediums())
