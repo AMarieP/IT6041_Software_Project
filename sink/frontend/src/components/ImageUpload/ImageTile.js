@@ -27,7 +27,7 @@ function ImagesBackendComponent({imageList, onImageListChange}) {
     "name": "",
     "alt": "",
     "url": "",
-    "order": "",
+    "main": Boolean,
   }
 
   
@@ -52,6 +52,35 @@ function ImagesBackendComponent({imageList, onImageListChange}) {
     setModal(false)
   }
 
+
+  //Handle the 'main' image setting still not finished
+  const handleMainImageSelection = (image, list) => {
+    
+    //If there are no images yet, automatically set image to main
+    if(list.length === 1){
+      list[0].main = true
+      return list
+    }
+
+    //If you are wanting to set this image as main, set the rest as false
+    if(image.main === true){
+      //Find the index of our target image
+      const currentIndex = list.findIndex(img => img.url === image.url)
+
+      //Create a new list setting all but our current index to false
+      const updatedList = list.map((img, index) => {
+        if (index === currentIndex) {
+          return { ...img, main: false };
+        } 
+        else {
+          return { ...img, main: false };
+        }
+      });
+
+      console.log(updatedList)
+    }
+  }
+
   //New image or Updated
   const handleImageSubmit = (image) => {
 
@@ -65,6 +94,7 @@ function ImagesBackendComponent({imageList, onImageListChange}) {
     } else {
       updatedImageList.push(image); 
     }
+    
 
     setMyImages(updatedImageList);
     closeModal();
@@ -91,13 +121,16 @@ function ImagesBackendComponent({imageList, onImageListChange}) {
   }
 
 
+
+
+
   
 
     //Gets the image list and maps
     const images = thisImageList.map((img) => {
       
         return(
-          <div key={img.id} style={img.order === 1 ? styles.mainImg : styles.imgContainer} onClick={() => {openModal(); setActiveImage(img); console.log(thisImageList)}} >
+          <div key={img.id} style={img.main === true ? styles.mainImg : styles.imgContainer} onClick={() => {openModal(); setActiveImage(img); console.log(thisImageList)}} >
             <img src={img.url} alt={img.alt} style={styles.image} />
           </div>
             
@@ -149,6 +182,7 @@ function ImagesBackendComponent({imageList, onImageListChange}) {
         gridColumnEnd: 3,
         gridRowStart: 1,
         gridRowEnd: 3,
+        // order: 1,
         border: '1px solid black',
         height: 'calc((((50vw - 20px) / 3) * 2) - 10px)',
         width: '100%',

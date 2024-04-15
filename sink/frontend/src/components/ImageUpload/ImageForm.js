@@ -44,7 +44,7 @@ function ImageForm({onClose, onSave, onDelete, activeImg}) {
           <TextBox id={'imageName'} name={'name'} defaultValue={activeImg.name}></TextBox>
           <TextBox id={'imageAlt'} name={'alt'} defaultValue={activeImg.alt}></TextBox>
           <TextBox id={'imageUrl'} name={'url'} defaultValue={activeImg.url}></TextBox>
-          {/* <SliderToggle toggleName={'order'} toggleId={'imageOrder'} defaultChecked={true}>Main Image</SliderToggle> */}
+          {/* <SliderToggle toggleName={'isMain'} toggleId={'imageOrder'} defaultChecked={activeImg.main}>Main Image</SliderToggle> */}
           <br/>
           <div style={styles.buttonContainer}>
             <ButtonBlack type="submit">save</ButtonBlack>
