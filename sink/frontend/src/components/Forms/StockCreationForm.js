@@ -5,8 +5,9 @@ import SliderToggle from "../SliderToggle/sliderToggle"
 import BoxWithDropshadow from "../boxWithDropshadow"
 import TextBox from "../textBox"
 import TextArea from "../textArea"
-import FauxRadioButton from "../FauxRadioButton/fauxRadioButton"
+
 import ButtonBlack from "../buttons/buttonBlack";
+import FauxRadio from "../FauxRadio/fauxRadio";
 
 const StockCreationForm = () => {
     const [name, setName] = useState('')
@@ -113,14 +114,13 @@ const StockCreationForm = () => {
             <div style={styles.rightSide}>
                 <BoxWithDropshadow style={styles.status}>
                     <h3>Status</h3>
-                    <FauxRadioButton 
+                    <FauxRadio
                         radName="status"
                         radValue="sold"
-                        isChecked={status === "sold"}
                         onChange={(e) => setStatus(e.target.value)}
                     >
                         Sold
-                    </FauxRadioButton>
+                    </FauxRadio>
                 </BoxWithDropshadow>
                 <BoxWithDropshadow style={styles.archived}>
                     <h3>Archived</h3>

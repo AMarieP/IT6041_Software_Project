@@ -3,9 +3,12 @@ import { useState } from "react"
 import BoxWithDropshadow from "../components/boxWithDropshadow"
 import TextBox from "../components/textBox"
 import FauxRadio from "../components/FauxRadio/fauxRadio"
+import useCheckbox from "../hooks/useCheckbox"
 
 const ViewStock = () => {
     const [search, setSearch] = useState('')
+    const { checkedItems, handleCheckboxChange, isChecked } = useCheckbox([])
+
 
 
     return (
@@ -22,12 +25,18 @@ const ViewStock = () => {
                         thisHeight={'35px'}                    
                     />
                     <div style={styles.radioBtns}>
-                        <FauxRadio radId={'archived'} radName={'archived'} radValue={'archived'} children={'archived'}/>
-                        <FauxRadio radId={'under negotiation'} radName={'under negotiation'} radValue={'under negotiation'} children={'under negotiation'} />
-                        <FauxRadio radId={'in gallery'} radName={'in gallery'} radValue={'in gallery'} children={'in gallery'}/>
-                        <FauxRadio radId={'sold'} radName={'sold'} radValue={'sold'} children={'sold'}/>
-                        <FauxRadio radId={'listed'} radName={'listed'} radValue={'listed'} children={'listed'}/>
+                        <FauxRadio radId={'archived'} radName={'archived'} radValue={'archived'} children={'archived'}
+                            checked={isChecked('archived')} onChange={() => handleCheckboxChange('archived')}/>
+                        <FauxRadio radId={'under negotiation'} radName={'under negotiation'} radValue={'under negotiation'} children={'under negotiation'}
+                            checked={isChecked('underNegotiation')} onChange={() => handleCheckboxChange('underNegotiation')}/>
+                        <FauxRadio radId={'in gallery'} radName={'in gallery'} radValue={'in gallery'} children={'in gallery'}
+                            checked={isChecked('inGallery')} onChange={() => handleCheckboxChange('inGallery')}/>
+                        <FauxRadio radId={'sold'} radName={'sold'} radValue={'sold'} children={'sold'}
+                            checked={isChecked('sold')} onChange={() => handleCheckboxChange('sold')}/>
+                        <FauxRadio radId={'listed'} radName={'listed'} radValue={'listed'} children={'listed'}
+                            checked={isChecked('listed')} onChange={() => handleCheckboxChange('listed')}/>
                     </div>
+                    
                 </BoxWithDropshadow>
             </div>
             <div>
