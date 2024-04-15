@@ -1,5 +1,20 @@
 import {React, useState} from 'react'
 
+
+/*
+Image Carousel COmponent
+
+Displays images given to it from array
+Left and right buttons moves through the image thumbnails and sets
+the active image as main so user can view
+
+To do:
+Change 'left' and 'right' buttons to arrow icons. 
+
+Add onHover effects so left and right buttons appear and disappear on hover
+
+*/
+
 export default function Carousel({images}) {
 
     const [activeImage, imageIsActive] = useState(images[0])
@@ -35,11 +50,11 @@ export default function Carousel({images}) {
     
 
   return (
-    <section>
+    <section style={styles.container}>
         <div>
-            <section>
-                <button onClick={() => ArrowButtons('left')}>left</button>
-                <button onClick={() => ArrowButtons('right')}>right</button>
+            <section style={styles.arrows}>
+                <button style={styles.arrowButton} onClick={() => ArrowButtons('left')}>left</button>
+                <button style={styles.arrowButton} onClick={() => ArrowButtons('right')}>right</button>
 
             </section>
             <img src={activeImage.url} alt={activeImage.alt} style={styles.activeImg} />
@@ -64,7 +79,17 @@ const styles = {
     },
     arrows: {
         position: 'absolute',
-        zIndex: '2'
+        zIndex: '2',
+        width: '100%',
+        height: '60vh',
+        display: 'flex',
+        flexFlow: 'row nowrap',
+        alignContent: 'space-between',
+        justifyContent: 'space-between',
+    },
+    arrowButton: {
+        opacity: '0.6',
+        border: 'none'
 
     },
     thumbnails: {
@@ -85,6 +110,8 @@ const styles = {
         width: '5rem',
         overflow: 'hidden',
         objectFit: 'cover',
+        filter: 'grayscale(100)'
+
 
     },
     thumbnailActive: {
@@ -92,8 +119,6 @@ const styles = {
         width: '5rem',
         overflow: 'hidden',
         objectFit: 'cover',
-        filter: 'hue-rotate(90deg)'
-
     },
 
 }
