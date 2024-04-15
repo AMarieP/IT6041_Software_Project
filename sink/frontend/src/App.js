@@ -10,6 +10,7 @@ import ViewAListing from './pages/ViewAListing';
 import ViewFandM from './pages/ViewFandM';
 import ViewStock from './pages/ViewStock';
 import Home from './pages/Home';
+import StockEditDelete from './pages/StockEditDelete';
 import MainLayout from './components/MainLayout'
 
 function App() {
@@ -32,6 +33,10 @@ function App() {
             <Route
               path = "/StockCreate"
               element = {user ? <StockCreate/> : <Navigate to="/ViewStock" />}
+            />
+            <Route
+              path = "/StockEditDelete"
+              element = {user ? <StockEditDelete/> : <Navigate to="/ViewStock" />}
             />
             <Route
               path = "/ViewAListing"

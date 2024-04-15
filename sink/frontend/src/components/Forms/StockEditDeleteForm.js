@@ -1,14 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom"
 
 //importing components
 import SliderToggle from "../SliderToggle/sliderToggle"
 import BoxWithDropshadow from "../boxWithDropshadow"
 import TextBox from "../textBox"
 import TextArea from "../textArea"
-import FauxRadioButton from "../FauxRadioButton/fauxRadioButton"
+import FauxRadio from "../FauxRadio/fauxRadio"
 import ButtonBlack from "../buttons/buttonBlack";
 
-const StockCreationForm = () => {
+const StockEditDeleteForm = () => {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [images, setImages] = useState('')
@@ -18,15 +19,34 @@ const StockCreationForm = () => {
     const [status, setStatus] = useState('')
     const [archived, setArchived] = useState('')
     const [error, setError] = useState('')
+    const {id} = useParams()
+    const navigate = useNavigate()
 
+    //prefills sections of the form
+    useEffect(()=>{
+        getProductDetails()
+    },)
+    const getProductDetails = async () => {
+        const response = await fetch(`/api/stock/${id}`)
+        const singleStock = await response.json()
+        setName(singleStock.name)
+        setDescription(singleStock.description)
+        setImages(singleStock.images)
+        setDimensions(singleStock.dimensions)
+        setMedium(singleStock.medium)
+        setArtist(singleStock.artist)
+        setStatus(singleStock.status)
+        setArchived(true)
+    }
 
+    //handels the update of the 
     const handelSubmit = async (e) => {
         e.preventDefault()
 
         const stock = {name,description,dimensions,medium,artist}
-        console.log(stock)
-        const response = await fetch('/api/stock/', {
-            method:'POST',
+
+        const response = await fetch(`/api/stock/${id}`, {
+            method:'PATCH',
             body: JSON.stringify(stock),
             headers: {
                 'content-type' : 'application/json'
@@ -38,19 +58,31 @@ const StockCreationForm = () => {
             setError(json.error)
         }
         if (response.ok) {
-            setError(null)
-            console.log('new stock added', json)
-            setName('')
-            setDescription('')
-            setImages('')
-            setDimensions('')
-            setMedium('')
-            setArtist('')
-            setStatus('')
-            setArchived(true)
+            setError(null)//could put a notification pop up here to say that the upload was a succsess
         }
     }
 
+    const handelDelete = async (e) => {
+        e.preventDefault()
+
+
+        const response = await fetch(`/api/stock/${id}`, {
+            method:'DELETE',
+            headers: {
+                'content-type' : 'application/json'
+            }
+        })
+
+        if (!response.ok) {
+            const error = await response.json()
+            setError(error.message)
+        }
+        if (response.ok) {
+            setError(null)//could put a notification pop up here to say that the upload was a succsess
+            console.log('Stock item deleted successfully');
+            navigate('/ViewStock')
+        }
+    }
 
     return (
         <form style={styles.StockCreationForm}>
@@ -113,14 +145,11 @@ const StockCreationForm = () => {
             <div style={styles.rightSide}>
                 <BoxWithDropshadow style={styles.status}>
                     <h3>Status</h3>
-                    <FauxRadioButton 
-                        radName="status"
-                        radValue="sold"
-                        isChecked={status === "sold"}
+                    <FauxRadio 
+                        children={'sold'}
                         onChange={(e) => setStatus(e.target.value)}
-                    >
-                        Sold
-                    </FauxRadioButton>
+                        value={status}
+                    />
                 </BoxWithDropshadow>
                 <BoxWithDropshadow style={styles.archived}>
                     <h3>Archived</h3>
@@ -137,6 +166,10 @@ const StockCreationForm = () => {
                         <ButtonBlack
                             children={'Save'}
                             onClick={handelSubmit}
+                        />
+                        <ButtonBlack
+                            children={'Delete'}
+                            onClick={handelDelete}
                         />
                     </div>
                 </BoxWithDropshadow>
@@ -191,4 +224,4 @@ const styles = {
 
 }
 
-export default StockCreationForm 
+export default StockEditDeleteForm
