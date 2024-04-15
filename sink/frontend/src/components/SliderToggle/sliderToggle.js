@@ -7,7 +7,7 @@ useState changes styling on checkbox
 */
 
 
-function SliderToggle({value, toggleName, toggleId, children}) {
+function SliderToggle({defaultChecked, toggleName, toggleId, children}) {
 
     const [isToggled, setToggle] = useState(false)
     const elementRef = useRef(null)
@@ -26,7 +26,7 @@ function SliderToggle({value, toggleName, toggleId, children}) {
     
   return (
         <label className='sliderContainer'>
-            <input type='checkbox' name={toggleName} id={toggleId} value={value} onClick={() => setToggle(!isToggled)} />
+            <input type='checkbox' name={toggleName} id={toggleId} defaultChecked={defaultChecked} onClick={() => setToggle(!isToggled)} />
             <label className='switchLabel' htmlFor={toggleId}>{children}</label>
             <label className={onOff} htmlFor={toggleId} ref={elementRef}>{onOff}</label>
         </label>

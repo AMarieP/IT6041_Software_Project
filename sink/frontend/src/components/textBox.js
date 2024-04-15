@@ -8,7 +8,7 @@ and height can be altered using 'thisHeight' props
 
 */
 
-function TextBox({id, name, thisHeight, value}) {
+function TextBox({id, name, thisHeight, defaultValue}) {
 
   const styles = {
     container: {
@@ -32,7 +32,7 @@ function TextBox({id, name, thisHeight, value}) {
   return (
     <div style={styles.container}>
     <label htmlFor={id}>{name}</label>
-    <input style={styles.inputBox} type="text" id={id} name={name} defaultValue={value}/>
+    <input style={styles.inputBox} type="text" id={id} name={name} defaultValue={defaultValue}/>
     </div>
 
   )
