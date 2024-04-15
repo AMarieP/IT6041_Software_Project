@@ -11,6 +11,7 @@ Function:
 Add new image with button
 Update an existing image by clicking on it
 Delete an image in the pop-up modal
+Main image is the first image in the array
 
 To Add:
 Handling for 'main' image
@@ -130,7 +131,7 @@ function ImagesBackendComponent({imageList, onImageListChange}) {
     const images = thisImageList.map((img) => {
       
         return(
-          <div key={img.id} style={img.main === true ? styles.mainImg : styles.imgContainer} onClick={() => {openModal(); setActiveImage(img); console.log(thisImageList)}} >
+          <div key={img.id} style={thisImageList[0] === img ? styles.mainImg : styles.imgContainer} onClick={() => {openModal(); setActiveImage(img); console.log(thisImageList)}} >
             <img src={img.url} alt={img.alt} style={styles.image} />
           </div>
             
