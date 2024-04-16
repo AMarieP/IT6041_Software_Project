@@ -5,14 +5,14 @@ import SliderToggle from "../SliderToggle/sliderToggle"
 import BoxWithDropshadow from "../boxWithDropshadow"
 import TextBox from "../textBox"
 import TextArea from "../textArea"
-
 import ButtonBlack from "../buttons/buttonBlack";
 import FauxRadio from "../FauxRadio/fauxRadio";
+import ImageTile from "../ImageUpload/ImageTile"
 
 const StockCreationForm = () => {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
-    const [images, setImages] = useState('')
+    const [images, setImages] = useState([])
     const [dimensions, setDimensions] = useState('')
     const [medium, setMedium] = useState('')
     const [artist, setArtist] = useState('')
@@ -21,10 +21,10 @@ const StockCreationForm = () => {
     const [error, setError] = useState('')
 
 
-    const handelSubmit = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const stock = {name,description,dimensions,medium,artist}
+        const stock = {name, description, images, dimensions, medium, artist}
         console.log(stock)
         const response = await fetch('/api/stock/', {
             method:'POST',
@@ -62,7 +62,7 @@ const StockCreationForm = () => {
                         <TextBox
                             id={'name'}
                             name={'Name:'}
-                            value={name} 
+                            defaultValue={name} 
                             thisHeight={'40px'}
                             onChange={(e) => setName(e.target.value)}
                         />
@@ -77,12 +77,8 @@ const StockCreationForm = () => {
                 </BoxWithDropshadow>
                 
                 <BoxWithDropshadow style={styles.images}>
-                    <h3>Images</h3> 
-                    <input 
-                        type="image"
-                        onChange={(e) => setImages(e.target.value)}
-                        value={images}
-                    />
+                    <h3>Images</h3>
+                    <ImageTile onImageListChange={setImages} imageList={images}/> 
                 </BoxWithDropshadow>
                 <BoxWithDropshadow >
                     <h3>Details</h3>
@@ -91,26 +87,28 @@ const StockCreationForm = () => {
                             id={'dimensions:'}
                             name={'dimensions:'}
                             onChange={(e) => setDimensions(e.target.value)}
-                            value={dimensions}
+                            defaultValue={dimensions}
                             thisHeight={"40px"}
                         />
                         <TextBox 
                             id={'medium:'}
                             name={'medium:'}
                             onChange={(e) => setMedium(e.target.value)}
-                            value={medium}
+                            defaultValue={medium}
                             thisHeight={"40px"}
                         />
                         <TextBox 
                             id={'artist:'}
                             name={'artist:'}
                             onChange={(e) => setArtist(e.target.value)}
-                            value={artist}
+                            defaultValue={artist}
                             thisHeight={"40px"}
                         />
                     </div>
                 </BoxWithDropshadow>
             </div>
+
+
             <div style={styles.rightSide}>
                 <BoxWithDropshadow style={styles.status}>
                     <h3>Status</h3>
@@ -136,7 +134,7 @@ const StockCreationForm = () => {
                     <div style={styles.finalButtons}>
                         <ButtonBlack
                             children={'Save'}
-                            onClick={handelSubmit}
+                            onClick={handleSubmit}
                         />
                     </div>
                 </BoxWithDropshadow>
