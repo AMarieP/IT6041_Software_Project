@@ -7,7 +7,7 @@ import TextBox from "../textBox"
 import TextArea from "../textArea"
 import ButtonBlack from "../buttons/buttonBlack";
 import FauxRadio from "../FauxRadio/fauxRadio";
-import FauxRadioButton from "../FauxRadioButton/fauxRadioButton";
+import FauxCheckButton from "../FauxCheckButton/FauxCheckButton";
 import ImageTile from "../ImageUpload/ImageTile"
 
 const StockCreationForm = () => {
@@ -23,7 +23,23 @@ const StockCreationForm = () => {
         status: "",
         archived: ""
     })
+    
 
+    //Creates the choices for the radio button
+    const radioButtonChoices = [
+        {
+            value: 'enquire',
+            name: 'enquire',
+        },
+        {
+            value: 'underNegotiation',
+            name: 'under negotiation',
+        },
+        {
+            value: 'sold',
+            name: 'sold',
+        },
+    ]
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -116,15 +132,13 @@ const StockCreationForm = () => {
 
 
             <div style={styles.rightSide}>
-                <BoxWithDropshadow style={styles.status}>
-                    <FauxRadioButton name={'name'}>something</FauxRadioButton>
+                <BoxWithDropshadow>
+                    <div style={styles.status}>
                     <h2>Status</h2>
-                    <FauxRadio
-                        name="status"
-                        value="sold"
-                        onChange={(e) => setStock({...thisStock, status: e.target.value})}>
-                        Sold
-                    </FauxRadio>
+                    <FauxCheckButton name={'status'} array={radioButtonChoices} onChange={(e) => setStock({...thisStock, status: e.target.value})} />
+                    </div>
+
+
                 </BoxWithDropshadow>
                 <BoxWithDropshadow style={styles.archived}>
                     <h2>Archived</h2>
@@ -183,6 +197,10 @@ const styles = {
         gap:'20px'
     },
     status:{
+        display:'flex',
+        flexDirection: 'column',
+        width: '100%',
+        gap: '0.3rem'
 
     },
     archived:{

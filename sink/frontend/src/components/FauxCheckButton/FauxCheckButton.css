@@ -11,14 +11,14 @@
     box-shadow: 0px 3px 3px lightgrey;
   }
   
-  .fauxButtonContainer input[type="checkbox"] {
+  .fauxButtonContainer input[type="radio"] {
     height: 0;
     width: 0;
     margin: 0;
     padding: 0;
   }
 
-  .fauxButtonContainer input[type="checkbox"]:checked + .fauxButtonContainerLabel {
+  .fauxButtonContainer input[type="radio"]:checked + .fauxButtonContainerLabel {
     color: white;
     background-color: black;
 
