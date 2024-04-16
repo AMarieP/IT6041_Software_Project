@@ -44,10 +44,10 @@ const ViewStock = () => {
         <div>
           <h1>My Stock</h1>
           <BoxWithDropshadow>
+            <h3 style={styles.searchText}>Search:</h3>
             <TextBox
               id="search"
               type="text"
-              name="Search:"
               onChange={(e) => setSearch(e.target.value)}
               value={search}
               thisHeight={"35px"}
@@ -116,6 +116,12 @@ const styles = {
         width:'100%',
         justifyContent:'space-between',
         marginTop:'25px'
+
+    },
+    searchText:{
+      fontSize:'40px',
+      marginTop:'0px',
+      marginBottom:'20px',
 
     },
     cards:{

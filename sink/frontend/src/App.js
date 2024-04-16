@@ -38,7 +38,7 @@ function App() {
               element = {user ? <StockCreate/> : <Navigate to="/ViewStock" />}
             />
             <Route
-              path = "/StockEditDelete"
+              path = '/StockEditDelete/:id'
               element = {user ? <StockEditDelete/> : <Navigate to="/ViewStock" />}
             />
             <Route

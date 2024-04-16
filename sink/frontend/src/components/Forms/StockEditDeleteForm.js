@@ -29,13 +29,13 @@ const StockEditDeleteForm = () => {
 
     //prefills sections of the form
     useEffect(()=>{
-        getProductDetails()
-    },)
+        getProductDetails(id)
+    },[])
 
-    const getProductDetails = async () => {
-        const response = await fetch(`/api/stock/${id}`)
+    const getProductDetails = async (id) => {
+        const response = await fetch(`/api/Stock/${id}`)
         const singleStock = await response.json()
-        setStock = {
+        setStock({
             name: singleStock.name,
             description: singleStock.description,
             images: singleStock.images,
@@ -44,7 +44,7 @@ const StockEditDeleteForm = () => {
             artist: singleStock.artist,
             status: singleStock.status,
             archived: true
-        }
+        })
     }
 
     //Handle the update of the stock
