@@ -25,11 +25,14 @@
     flex: 1;
     padding: 0.5em;
     height: 100%;
-    position: relative; 
     text-transform: lowercase;
-    display: flex;
+    transition: padding-left 1s ease;
+
 }
 
+.switchLabel.yes{
+    padding-left: calc(var(--label-width) - (var(--label-width)/2));
+}
 
 
 .sliderContainer label.on,
@@ -51,3 +54,4 @@
 .sliderContainer label.off {
     left: calc(100% - var(--element-width));
 }
+
