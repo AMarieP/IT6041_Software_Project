@@ -6,7 +6,7 @@ import SliderToggle from "../SliderToggle/sliderToggle"
 import BoxWithDropshadow from "../boxWithDropshadow"
 import TextBox from "../textBox"
 import TextArea from "../textArea"
-import FauxRadio from "../FauxRadio/fauxRadio"
+import FauxCheckButton from "../FauxRadio/fauxRadio"
 import ButtonBlack from "../buttons/buttonBlack"
 import ImageTile from "../ImageUpload/ImageTile"
 
@@ -27,6 +27,21 @@ const StockEditDeleteForm = () => {
     const {id} = useParams()
     const navigate = useNavigate()
 
+    //Creates the choices for the radio button
+    const radioButtonChoices = [
+        {
+            value: 'enquire',
+            name: 'enquire',
+        },
+        {
+            value: 'underNegotiation',
+            name: 'under negotiation',
+        },
+        {
+            value: 'sold',
+            name: 'sold',
+        },
+    ]
     //prefills sections of the form
     useEffect(()=>{
         getProductDetails()
@@ -151,12 +166,10 @@ const StockEditDeleteForm = () => {
             </div>
             <div style={styles.rightSide}>
                 <BoxWithDropshadow style={styles.status}>
-                    <h3>Status</h3>
-                    <FauxRadio 
-                        children={'sold'}
-                        onChange={(e) => setStock({...thisStock, status: e.target.value})}
-                        value={thisStock.status}
-                    />
+                    <div style={styles.status}>
+                        <h2>Status</h2>
+                        <FauxCheckButton name={'status'} array={radioButtonChoices} onChange={(e) => setStock({...thisStock, status: e.target.value})} />
+                    </div>
                 </BoxWithDropshadow>
                 <BoxWithDropshadow style={styles.archived}>
                     <h3>Archived</h3>

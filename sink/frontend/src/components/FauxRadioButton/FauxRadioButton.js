@@ -1,7 +1,7 @@
 import React from "react";
-import "./FauxCheckButton.css";
+import "./FauxRadioButton.css";
 
-function FauxCheckButton({ name, array, onChange }) {
+function FauxRadioButton({ name, array, onChange }) {
   
   const radioButtons = array.map((radioOption) => (    
       <label className="fauxButtonContainer">
@@ -24,4 +24,4 @@ function FauxCheckButton({ name, array, onChange }) {
 }
 
 
-export default FauxCheckButton;
+export default FauxRadioButton;

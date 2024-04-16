@@ -7,7 +7,7 @@ import TextBox from "../textBox"
 import TextArea from "../textArea"
 import ButtonBlack from "../buttons/buttonBlack";
 import FauxRadio from "../FauxRadio/fauxRadio";
-import FauxCheckButton from "../FauxCheckButton/FauxCheckButton";
+import FauxCheckButton from "../FauxRadioButton/FauxRadioButton";
 import ImageTile from "../ImageUpload/ImageTile"
 
 const StockCreationForm = () => {
@@ -133,12 +133,10 @@ const StockCreationForm = () => {
 
             <div style={styles.rightSide}>
                 <BoxWithDropshadow>
-                    <div style={styles.status}>
+                    <div style={styles.status}> 
                     <h2>Status</h2>
                     <FauxCheckButton name={'status'} array={radioButtonChoices} onChange={(e) => setStock({...thisStock, status: e.target.value})} />
                     </div>
-
-
                 </BoxWithDropshadow>
                 <BoxWithDropshadow style={styles.archived}>
                     <h2>Archived</h2>
