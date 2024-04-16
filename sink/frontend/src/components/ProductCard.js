@@ -47,7 +47,9 @@ function ProductCard({product}) {
     console.log(mediums())
   return (
     <div style={styles.container}>
-        <img style={styles.image} src={mainImage[0].url}/>
+        {mainImage.length > 0 && (
+            <img style={styles.image} src={mainImage[0].url} alt="Product" />
+        )}
         <div style={styles.textContainer}>
             <div style={styles.textLeft}>
                 <h1 style={styles.head} >{product.name}</h1>

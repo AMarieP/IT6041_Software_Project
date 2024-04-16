@@ -4,6 +4,7 @@ import BoxWithDropshadow from "../components/boxWithDropshadow"
 import TextBox from "../components/textBox"
 import FauxRadio from "../components/FauxRadio/fauxRadio"
 import useCheckbox from "../hooks/useCheckbox"
+import ProductCard from "../components/ProductCard"
 
 
 const ViewStock = () => {
@@ -94,13 +95,12 @@ const ViewStock = () => {
               />
             </div>
           </BoxWithDropshadow>
-          <div>
-            <h2>Search Results</h2>
+          <div style={styles.Cards}>
             <ul>
               {results.map((result) => (
-                <li key={result._id}>
-                  {result.name} - {result.category}
-                </li>
+                <ProductCard product={result} >
+
+                </ProductCard>
               ))}
             </ul>
           </div>
@@ -116,6 +116,9 @@ const styles = {
         width:'100%',
         justifyContent:'space-between',
         marginTop:'25px'
+
+    },
+    cards:{
 
     },
 }
