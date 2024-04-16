@@ -17,6 +17,8 @@ function TextArea({name, thisHeight, formId, value='', onChange}) {
       flexFlow: 'column nowrap',
       alignItems: 'flex-start',
       fontFamily: 'Roboto',
+      fontSize: '0.9rem',
+      textTransform: 'lowercase',
       color: 'black',
       width: '100%' //Width should always be 100% parent
 

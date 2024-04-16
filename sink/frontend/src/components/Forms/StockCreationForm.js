@@ -62,7 +62,7 @@ const StockCreationForm = () => {
         <form style={styles.StockCreationForm}>
             <div style={styles.leftSide}>
                 <BoxWithDropshadow>
-                    <h3>Description</h3>
+                    <h2>Description</h2>
                     <div style={styles.stockDescription}>
                         <TextBox
                             id={'name'}
@@ -82,11 +82,11 @@ const StockCreationForm = () => {
                 </BoxWithDropshadow>
                 
                 <BoxWithDropshadow style={styles.images}>
-                    <h3>Images</h3>
+                    <h2>Images</h2>
                     <ImageTile onImageListChange={(e) => setStock({...thisStock, images: e})} imageList={thisStock.images}/> 
                 </BoxWithDropshadow>
                 <BoxWithDropshadow >
-                    <h3>Details</h3>
+                    <h2>Details</h2>
                     <div style={styles.details}>
                         <TextBox 
                             id={'dimensions:'}
@@ -116,7 +116,7 @@ const StockCreationForm = () => {
 
             <div style={styles.rightSide}>
                 <BoxWithDropshadow style={styles.status}>
-                    <h3>Status</h3>
+                    <h2>Status</h2>
                     <FauxRadio
                         radName="status"
                         radValue="sold"
@@ -125,7 +125,7 @@ const StockCreationForm = () => {
                     </FauxRadio>
                 </BoxWithDropshadow>
                 <BoxWithDropshadow style={styles.archived}>
-                    <h3>Archived</h3>
+                    <h2>Archived</h2>
                     <SliderToggle 
                         children={'archived'}
                         toggleId={'archived'}
