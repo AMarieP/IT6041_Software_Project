@@ -4,7 +4,8 @@ const {
     getAllStock,
     getOneStockByID,
     updateStock,
-    deleteStock
+    deleteStock,
+    searchStock
 } = require('../controllers/stock')
 
 const router = express.Router()
@@ -24,5 +25,8 @@ router.patch('/:id', updateStock)
 
 //DELETE One Stock
 router.delete('/:id', deleteStock)
+
+//search stock and post results
+router.post('/search', searchStock)
 
 module.exports = router
