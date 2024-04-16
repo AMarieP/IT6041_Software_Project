@@ -21,10 +21,22 @@ const StockCreationForm = () => {
     const [error, setError] = useState('')
 
 
+    const [thisStock, setStock] = useState({
+        name: "",
+        description: "",
+        images: [],
+        dimensions: "",
+        medium: "",
+        artist: "",
+        status: "",
+        archived: ""
+    })
+
+
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const stock = {name, description, images, dimensions, medium, artist}
+        const stock = {thisStock}
         console.log(stock)
         const response = await fetch('/api/stock/', {
             method:'POST',
@@ -62,23 +74,23 @@ const StockCreationForm = () => {
                         <TextBox
                             id={'name'}
                             name={'Name:'}
-                            defaultValue={name} 
+                            defaultValue={thisStock.name} 
                             thisHeight={'40px'}
-                            onChange={(e) => setName(e.target.value)}
+                            onChange={(e) => setStock({...thisStock, name: e.target.value})}
                         />
                         <TextArea
-                            formId={'discription'}
+                            formId={'description'}
                             name={'description:'}
                             thisHeight={'120px'}
-                            onChange={(e) => setDescription(e.target.value)}
-                            value={description}
+                            onChange={(e) => setStock({...thisStock, description: e.target.value})}
+                            value={thisStock.description}
                         />
                     </div>
                 </BoxWithDropshadow>
                 
                 <BoxWithDropshadow style={styles.images}>
                     <h3>Images</h3>
-                    <ImageTile onImageListChange={setImages} imageList={images}/> 
+                    <ImageTile onImageListChange={(e) => setStock({...thisStock, images: e})} imageList={thisStock.images}/> 
                 </BoxWithDropshadow>
                 <BoxWithDropshadow >
                     <h3>Details</h3>
@@ -86,22 +98,22 @@ const StockCreationForm = () => {
                         <TextBox 
                             id={'dimensions:'}
                             name={'dimensions:'}
-                            onChange={(e) => setDimensions(e.target.value)}
-                            defaultValue={dimensions}
+                            onChange={(e) => setStock({...thisStock, dimensions: e.target.value})}
+                            defaultValue={thisStock.dimensions}
                             thisHeight={"40px"}
                         />
                         <TextBox 
                             id={'medium:'}
                             name={'medium:'}
-                            onChange={(e) => setMedium(e.target.value)}
-                            defaultValue={medium}
+                            onChange={(e) => setStock({...thisStock, medium: e.target.value})}
+                            defaultValue={thisStock.medium}
                             thisHeight={"40px"}
                         />
                         <TextBox 
                             id={'artist:'}
                             name={'artist:'}
-                            onChange={(e) => setArtist(e.target.value)}
-                            defaultValue={artist}
+                            onChange={(e) => setStock({...thisStock, artist: e.target.value})}
+                            defaultValue={thisStock.artist}
                             thisHeight={"40px"}
                         />
                     </div>
@@ -115,8 +127,7 @@ const StockCreationForm = () => {
                     <FauxRadio
                         radName="status"
                         radValue="sold"
-                        onChange={(e) => setStatus(e.target.value)}
-                    >
+                        onChange={(e) => setStock({...thisStock, status: e.target.value})}>
                         Sold
                     </FauxRadio>
                 </BoxWithDropshadow>
@@ -126,8 +137,8 @@ const StockCreationForm = () => {
                         children={'archived'}
                         toggleId={'archived'}
                         toggleName={'archived'}
-                        onChange={(e) => setArchived(e.target.value)}
-                        value={archived}
+                        onChange={(e) => setStock({...thisStock, archived: e.target.value})}
+                        value={thisStock.archived}
                     />
                 </BoxWithDropshadow>
                 <BoxWithDropshadow >
