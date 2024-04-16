@@ -154,6 +154,7 @@ function ImagesBackendComponent({imageList, onImageListChange}) {
   const styles = {
     container: {
         width: '100%',
+        minHeight: '50vh',
         display: 'flex',
         flexFlow: 'column nowrap',
         justifyContent: 'space-around',
@@ -176,7 +177,7 @@ function ImagesBackendComponent({imageList, onImageListChange}) {
         gridRowEnd: 3,
         border: '1px solid black',
         height: 'calc(50vh / 3 * 2)',
-        width: 'calc(50vh / 3 * 2)',
+        width: 'calc(100% / 3 * 2)',
         overflow: 'hidden',
         display: 'flex',
         justifyContent: 'center',
