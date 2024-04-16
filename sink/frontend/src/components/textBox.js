@@ -9,7 +9,7 @@ and height can be altered using 'thisHeight' props
 */
 
 
-function TextBox({id, name, thisHeight,value='',onChange}) {
+function TextBox({id, name, thisHeight, defaultValue, onChange}) {
 
 
   const styles = {
@@ -40,7 +40,7 @@ function TextBox({id, name, thisHeight,value='',onChange}) {
       type="text" 
       id={id} 
       name={name}
-      value={value}
+      defaultValue={defaultValue}
       onChange={onChange}
     />
 
