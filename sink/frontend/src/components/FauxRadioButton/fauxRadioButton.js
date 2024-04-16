@@ -1,18 +1,19 @@
 import React from "react";
 import "./fauxRadioButton.css";
 
-function FauxRadioButton({ radName, radValue, children, isChecked, onChange }) {
+function FauxRadioButton({ name, value, children, isChecked, onChange }) {
+
+  
   return (
-    <label className="fauxRadioContainer">
+    <label className="fauxButtonContainer">
       <input
         type="checkbox"
-        name={radName}
-        value={radValue}
+        name={name}
+        value={value}
         checked={isChecked}
         onChange={onChange}
-      />
-      <div className="checkmark"></div>
-      <span className="labelText"></span>
+      ></input>
+      <span className="fauxButtonContainerLabel">{children}</span>
       
     </label>
   );
