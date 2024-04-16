@@ -44,10 +44,10 @@ const ViewStock = () => {
         <div>
           <h1>My Stock</h1>
           <BoxWithDropshadow>
+            <h3 style={styles.searchText}>Search:</h3>
             <TextBox
               id="search"
               type="text"
-              name="Search:"
               onChange={(e) => setSearch(e.target.value)}
               value={search}
               thisHeight={"35px"}
@@ -95,15 +95,15 @@ const ViewStock = () => {
               />
             </div>
           </BoxWithDropshadow>
-          <div style={styles.Cards}>
-            <ul>
+          
+            <ul style={styles.cards}>
               {results.map((result) => (
                 <ProductCard product={result} >
 
                 </ProductCard>
               ))}
             </ul>
-          </div>
+          
         </div>
     );
 }
@@ -118,7 +118,16 @@ const styles = {
         marginTop:'25px'
 
     },
-    cards:{
+    searchText:{
+      fontSize:'40px',
+      marginTop:'0px',
+      marginBottom:'20px',
 
+    },
+    cards:{
+      display:'grid',
+      gridTemplateColumns:'repeat(auto-fill, minmax(30%, 1fr))',
+      gap:'20px',
+      padding:'0px',
     },
 }

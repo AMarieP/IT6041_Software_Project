@@ -38,7 +38,7 @@ const Navbar = () => {
                 <CustomLink to="/ViewStock">Stock</CustomLink>
                 <CustomLink to="/ViewFandM">Frames And Matteboards</CustomLink>
                 {user && <CustomLink to="/StockCreate">Add new stock</CustomLink>}
-                {user && <CustomLink to="/StockEditDelete">Update and delete stock</CustomLink>}
+                {user && <CustomLink to={`/StockEditDelete/${'661475946dab09cfb9453495'}`}>Update and delete stock</CustomLink>}
             </ul>
             <div style={styles.logoutButton}>
                 {user && <ButtonBlack onClick={handelLogout} >Logout</ButtonBlack>}
