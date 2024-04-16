@@ -12,8 +12,8 @@ function BoxWithDropshadow({children}) {
 const styles = {
     container:{
         backgroundColor: 'white',
-        boxShadow: '4px 4px 5px lightgrey',
-        border: '2px solid black',
+        boxShadow: '4px 4px 1px lightgrey',
+        border: '1px solid black',
         padding: '5%',
     }
 }

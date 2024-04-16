@@ -1,14 +1,11 @@
 .sliderContainer {
     display: flex;
-    flex-flow: row nowrap;
-    background-color: blueviolet;
     border: 1px solid black;
     border-radius: 4px;
     overflow: hidden;
     font-family: "Roboto", sans-serif;
     font-weight: 500;
     font-style: normal;
-    text-transform: capitalize;
     width: 100%;
     box-shadow: 0px 3px 3px lightgrey;
     position: relative; 
@@ -21,16 +18,22 @@
     margin: 0;
     padding: 0;
 }
-
+ 
 .switchLabel {
     background-color: black;
     color: white;
     flex: 1;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    padding: 0.5em;
     height: 100%;
-    position: relative; 
+    text-transform: lowercase;
+    transition: padding-left 1s ease;
+
 }
+
+.switchLabel.yes{
+    padding-left: calc(var(--label-width) - (var(--label-width)/2));
+}
+
 
 .sliderContainer label.on,
 .sliderContainer label.off {
@@ -40,6 +43,8 @@
     position: absolute; 
     top: 0;
     transition: left 1s ease;
+    text-transform: capitalize;
+
 }
 
 .sliderContainer label.on {
@@ -49,3 +54,4 @@
 .sliderContainer label.off {
     left: calc(100% - var(--element-width));
 }
+

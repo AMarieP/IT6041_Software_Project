@@ -30,4 +30,3 @@
 .fauxRadioContainer input:checked ~.checkmark{
     background-color: black;
 }
-

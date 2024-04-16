@@ -9,7 +9,7 @@ and height can be altered using 'thisHeight' props
 
 */
 
-function TextArea({name, thisHeight, formId}) {
+function TextArea({name, thisHeight, formId, value='', onChange}) {
 
   const styles = {
     container: {
@@ -17,6 +17,8 @@ function TextArea({name, thisHeight, formId}) {
       flexFlow: 'column nowrap',
       alignItems: 'flex-start',
       fontFamily: 'Roboto',
+      fontSize: '0.9rem',
+      textTransform: 'lowercase',
       color: 'black',
       width: '100%' //Width should always be 100% parent
 
@@ -33,8 +35,16 @@ function TextArea({name, thisHeight, formId}) {
 }
   return (
     <div style={styles.container}>
-    <label htmlFor={formId}>{name}</label>
-    <textarea style={styles.inputBox} type="text" form={formId} name={name}/>
+    <label htmlFor={name}>{name}</label>
+    <textarea 
+      style={styles.inputBox} 
+      type="text" 
+      form={formId} 
+      name={name}
+      value={value}
+      onChange={onChange}
+      />
+
     </div>
 
   )

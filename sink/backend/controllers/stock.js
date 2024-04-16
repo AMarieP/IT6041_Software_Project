@@ -108,6 +108,43 @@ const updateStock = async (req, res) => {
     }
 }
 
+//search stock given name and statuse(category)
+const searchStock = async (req, res) => {
+    const search = req.body.search;
+    const checkedItems = req.body.checkedItems || [];
+  
+
+        let query = {};
+        if (checkedItems.length > 0) {
+        query = {
+            $and: [
+            { Status: { $in: checkedItems } }, // Items with selected categories
+            {
+                $or: [
+                { name: { $regex: `${search}`, $options: 'i' } }, // Case-insensitive text search
+                { artist: { $regex: `${search}`, $options: 'i' } }, // Case-insensitive text search
+                ],
+            },
+            ],
+        };
+        } else {
+        query = {
+            $or: [
+                { name: { $regex: `${search}`, $options: 'i' } }, // Case-insensitive text search
+                { artist: { $regex: `${search}`, $options: 'i' } }, // Case-insensitive text search
+            ],
+        };
+        }
+  
+    try {
+      const results = await Stock.find(query);
+      res.json(results);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: 'Server Error' });
+    }
+  }
+
 
 
 module.exports = {
@@ -115,5 +152,6 @@ module.exports = {
     getAllStock,
     getOneStockByID,
     updateStock,
-    deleteStock
+    deleteStock,
+    searchStock
 }

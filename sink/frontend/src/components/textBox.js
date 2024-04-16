@@ -8,7 +8,9 @@ and height can be altered using 'thisHeight' props
 
 */
 
-function TextBox({id, name, thisHeight, defaultValue}) {
+
+function TextBox({id, name, thisHeight, defaultValue, onChange}) {
+
 
   const styles = {
     container: {
@@ -16,7 +18,8 @@ function TextBox({id, name, thisHeight, defaultValue}) {
       flexFlow: 'column nowrap',
       alignItems: 'flex-start',
       fontFamily: 'Roboto',
-      fontSize: '0.7rem',
+      fontSize: '0.9rem',
+      textTransform: 'lowercase',
       color: 'black',
       width: '100%' //Width should always be 100% parent
 
@@ -32,7 +35,16 @@ function TextBox({id, name, thisHeight, defaultValue}) {
   return (
     <div style={styles.container}>
     <label htmlFor={id}>{name}</label>
-    <input style={styles.inputBox} type="text" id={id} name={name} defaultValue={defaultValue}/>
+
+    <input 
+      style={styles.inputBox} 
+      type="text" 
+      id={id} 
+      name={name}
+      defaultValue={defaultValue}
+      onChange={onChange}
+    />
+
     </div>
 
   )

@@ -21,6 +21,8 @@ const styles = {
         border: '2px solid black', //Keep boarder so both styles of button remain same size
         borderRadius: '4px',
         boxShadow: '0px 2px 3px lightgrey',
+        textTransform: 'lowercase',
+        fontSize: '1rem'
     },
 }
 

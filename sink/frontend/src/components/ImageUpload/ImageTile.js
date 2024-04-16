@@ -15,12 +15,13 @@ Main image is the first image in the array
 
 To Add:
 Handling for 'main' image
+Handle image submit current will only allow one of each URL. 
+This is somewhat confusing behavior and should be fixed for user
 
 To Use: 
 State is managed in parent component passed through onImageListChange
 
 */
-
 
 function ImagesBackendComponent({imageList, onImageListChange}) {
   
@@ -28,12 +29,14 @@ function ImagesBackendComponent({imageList, onImageListChange}) {
     "name": "",
     "alt": "",
     "url": "",
-    "main": Boolean,
+    // "main": Boolean,
   }
 
   
   //Sets images to the image list associated with this listing
-  const [thisImageList, setMyImages] = useState(imageList)
+  // const [thisImageList, setMyImages] = useState(imageList)
+
+  const thisImageList = imageList
   
   //Sets modal state
   const [isModal, setModal] = useState(false)
@@ -92,12 +95,12 @@ function ImagesBackendComponent({imageList, onImageListChange}) {
     //If the URL already exists then update the image 
     if (thisImageList[imageIndex]) {
       updatedImageList[imageIndex] = image; 
+      console.log('Updating Existing Image')
     } else {
       updatedImageList.push(image); 
     }
-    
 
-    setMyImages(updatedImageList);
+    onImageListChange(updatedImageList)
     closeModal();
 }
   
@@ -105,13 +108,12 @@ function ImagesBackendComponent({imageList, onImageListChange}) {
   const handleImageDelete = () => {
 
     const imageIndex = thisImageList.indexOf(activeImage);
-    console.log(activeImage)
 
     //If the image can be found in the array
     if (thisImageList[imageIndex]) {
       const deleteImageList = [...thisImageList];
       deleteImageList.splice(imageIndex, 1)
-      setMyImages(deleteImageList);
+      onImageListChange(deleteImageList)
     } else{
       //If the image does not already exist do nothing. 
       console.log('Image was not found!')
@@ -121,15 +123,8 @@ function ImagesBackendComponent({imageList, onImageListChange}) {
     closeModal();
   }
 
-
-
-
-
-  
-
     //Gets the image list and maps
     const images = thisImageList.map((img) => {
-      
         return(
           <div key={img.id} style={thisImageList[0] === img ? styles.mainImg : styles.imgContainer} onClick={() => {openModal(); setActiveImage(img); console.log(thisImageList)}} >
             <img src={img.url} alt={img.alt} style={styles.image} />
@@ -139,13 +134,16 @@ function ImagesBackendComponent({imageList, onImageListChange}) {
         
     })
 
+
+
+
     return (
       <div style={styles.container}>
-        <h1 style={styles.heading}>images</h1>
         <div style={styles.imagesContainer}>
-            {images}
+            {thisImageList.length > 0 ? images : <div style={styles.noImages}>no images yet! click 'add new' to start adding images. </div>}
         </div>
-        <button onClick={openModal} >add new</button>
+        <br/>
+        <ButtonBlack type='button' onClick={openModal} >add new</ButtonBlack>
         {isModal && (
           <ImageForm onClose={closeModal} onSave={handleImageSubmit} onDelete={handleImageDelete} activeImg={activeImage} />
         )}
@@ -155,19 +153,13 @@ function ImagesBackendComponent({imageList, onImageListChange}) {
 
   const styles = {
     container: {
-        width: 'calc(50vw - 30px)',
+        width: '100%',
         minHeight: '50vh',
-        padding: '20px',
-        border: '1px solid black',
-        boxShadow: '4px 4px 5px lightgrey',    
-        // margin: '50px'
-
+        display: 'flex',
+        flexFlow: 'column nowrap',
+        justifyContent: 'space-around',
     },
 
-    heading: {
-        margin: '0 0 10px 0',
-
-    },
 
     imagesContainer:{
         display: 'grid',
@@ -183,10 +175,9 @@ function ImagesBackendComponent({imageList, onImageListChange}) {
         gridColumnEnd: 3,
         gridRowStart: 1,
         gridRowEnd: 3,
-        // order: 1,
         border: '1px solid black',
-        height: 'calc((((50vw - 20px) / 3) * 2) - 10px)',
-        width: '100%',
+        height: 'calc(50vh / 3 * 2)',
+        width: 'calc(100% / 3 * 2)',
         overflow: 'hidden',
         display: 'flex',
         justifyContent: 'center',
@@ -197,8 +188,8 @@ function ImagesBackendComponent({imageList, onImageListChange}) {
 
     imgContainer: {
         border: '1px solid black',
-        height: 'calc(((50vw - 20px) / 3) - 10px)',
-        width: 'calc(((50vw - 20px) / 3) - 10px)',
+          height: 'calc(50vh / 3)',
+        width: 'calc(50vh / 3)',
         overflow: 'hidden',
         display: 'flex',
         justifyContent: 'center',
@@ -212,6 +203,16 @@ function ImagesBackendComponent({imageList, onImageListChange}) {
 
     button: {
         width: '100%'
+
+    },
+
+    noImages: {
+      width: '100%',
+      gridColumnStart: 1,
+      gridColumnEnd: 4,
+      fontFamily: "Roboto, sans-serif",
+      fontWeight: 300,
+      fontStyle: 'italic',
 
     }
 
