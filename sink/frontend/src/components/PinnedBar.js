@@ -3,13 +3,13 @@ import ButtonBlack from './buttons/buttonBlack'
 import ButtonWhite from './buttons/buttonWhite'
 
 
-function PinnedBar() {
+function PinnedBar({save, discard, preview}) {
   return (
     <div style={styles.container}>
         <div style={styles.buttonContainer}>
-            <ButtonBlack>save</ButtonBlack>
-            <ButtonWhite>discard</ButtonWhite>
-            <ButtonWhite>preview</ButtonWhite>
+            <ButtonBlack onClick={save}>save</ButtonBlack>
+            <ButtonWhite onClick={discard}>discard</ButtonWhite>
+            <ButtonWhite onClick={preview}>preview</ButtonWhite>
         </div>
 
     </div>
