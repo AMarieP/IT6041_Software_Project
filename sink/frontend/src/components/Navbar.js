@@ -32,7 +32,7 @@ const Navbar = () => {
     return (
         <nav style={{ ...styles.nav, ...(hasScrolled && styles.navScrolled) }}>
             <Link to = "/Home" style={styles.title}>
-                Sink
+                sink
             </Link>
             <ul style={styles.ul}>
                 <CustomLink to="/ViewStock">Stock</CustomLink>
@@ -82,17 +82,20 @@ const styles = {
         flexDirection:'column',
         width:'20%',
         height:'100vh',
-        border:'2px solid black',
+        border:'none',
         paddingTop:'10px',
         position: "fixed",
+        boxShadow: '4px 4px 5px lightgrey',
     },
     navScrolled: {
         position: "fixed",
     },
     title:{
-        fontSize:'30px',
+        fontSize:'3rem',
+        fontWeight: '500',
         textDecoration:'none',
-        marginBottom:'20px',
+        marginBottom:'30px',
+        marginTop: '10px',
         marginLeft:'5px',
         color:'black',
         alignSelf:'center',
@@ -116,7 +119,7 @@ const styles = {
         alignItems:'center',
         textDecoration:'none',
         transition: 'background-color 0.3s ease',
-        padding: '8px 10px',
+        padding: '25px 10px',
         width: 'calc(100% - 20px)',
         color:'black',
     },
