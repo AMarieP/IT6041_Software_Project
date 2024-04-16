@@ -7,18 +7,23 @@ import BoxWithDropshadow from "../boxWithDropshadow"
 import TextBox from "../textBox"
 import TextArea from "../textArea"
 import FauxRadio from "../FauxRadio/fauxRadio"
-import ButtonBlack from "../buttons/buttonBlack";
+import ButtonBlack from "../buttons/buttonBlack"
+import ImageTile from "../ImageUpload/ImageTile"
+
 
 const StockEditDeleteForm = () => {
-    const [name, setName] = useState('')
-    const [description, setDescription] = useState('')
-    const [images, setImages] = useState('')
-    const [dimensions, setDimensions] = useState('')
-    const [medium, setMedium] = useState('')
-    const [artist, setArtist] = useState('')
-    const [status, setStatus] = useState('')
-    const [archived, setArchived] = useState('')
+
     const [error, setError] = useState('')
+    const [thisStock, setStock] = useState({
+        name: "",
+        description: "",
+        images: [],
+        dimensions: "",
+        medium: "",
+        artist: "",
+        status: "",
+        archived: ""
+    })
     const {id} = useParams()
     const navigate = useNavigate()
 
@@ -26,24 +31,27 @@ const StockEditDeleteForm = () => {
     useEffect(()=>{
         getProductDetails()
     },)
+
     const getProductDetails = async () => {
         const response = await fetch(`/api/stock/${id}`)
         const singleStock = await response.json()
-        setName(singleStock.name)
-        setDescription(singleStock.description)
-        setImages(singleStock.images)
-        setDimensions(singleStock.dimensions)
-        setMedium(singleStock.medium)
-        setArtist(singleStock.artist)
-        setStatus(singleStock.status)
-        setArchived(true)
+        setStock = {
+            name: singleStock.name,
+            description: singleStock.description,
+            images: singleStock.images,
+            dimensions: singleStock.images,
+            medium: singleStock.medium,
+            artist: singleStock.artist,
+            status: singleStock.status,
+            archived: true
+        }
     }
 
-    //handels the update of the 
-    const handelSubmit = async (e) => {
+    //Handle the update of the stock
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const stock = {name,description,dimensions,medium,artist}
+        const stock = thisStock
 
         const response = await fetch(`/api/stock/${id}`, {
             method:'PATCH',
@@ -58,11 +66,12 @@ const StockEditDeleteForm = () => {
             setError(json.error)
         }
         if (response.ok) {
-            setError(null)//could put a notification pop up here to say that the upload was a succsess
+            setError(null)
+            alert("Stock Updated Successfully")
         }
     }
 
-    const handelDelete = async (e) => {
+    const handleDelete = async (e) => {
         e.preventDefault()
 
 
@@ -78,7 +87,8 @@ const StockEditDeleteForm = () => {
             setError(error.message)
         }
         if (response.ok) {
-            setError(null)//could put a notification pop up here to say that the upload was a succsess
+            alert("Stock Deleted")
+            setError(null)
             console.log('Stock item deleted successfully');
             navigate('/ViewStock')
         }
@@ -93,27 +103,24 @@ const StockEditDeleteForm = () => {
                         <TextBox
                             id={'name'}
                             name={'Name:'}
-                            value={name} 
+                            defaultValue={thisStock.name} 
                             thisHeight={'40px'}
-                            onChange={(e) => setName(e.target.value)}
+                            onChange={(e) => setStock({...thisStock, name: e.target.value})}
                         />
                         <TextArea
-                            formId={'discription'}
+                            formId={'description'}
                             name={'description:'}
                             thisHeight={'120px'}
-                            onChange={(e) => setDescription(e.target.value)}
-                            value={description}
+                            onChange={(e) => setStock({...thisStock, description: e.target.value})}
+                            value={thisStock.description}
                         />
                     </div>
                 </BoxWithDropshadow>
                 
                 <BoxWithDropshadow style={styles.images}>
-                    <h3>Images</h3> 
-                    <input 
-                        type="image"
-                        onChange={(e) => setImages(e.target.value)}
-                        value={images}
-                    />
+                    <h3>Images</h3>
+                    <ImageTile onImageListChange={(e) => setStock({...thisStock, images: e})} imageList={thisStock.images}/> 
+
                 </BoxWithDropshadow>
                 <BoxWithDropshadow >
                     <h3>Details</h3>
@@ -121,22 +128,22 @@ const StockEditDeleteForm = () => {
                         <TextBox 
                             id={'dimensions:'}
                             name={'dimensions:'}
-                            onChange={(e) => setDimensions(e.target.value)}
-                            value={dimensions}
+                            onChange={(e) => setStock({...thisStock, dimensions: e.target.value})}
+                            defaultValue={thisStock.dimensions}
                             thisHeight={"40px"}
                         />
                         <TextBox 
                             id={'medium:'}
                             name={'medium:'}
-                            onChange={(e) => setMedium(e.target.value)}
-                            value={medium}
+                            onChange={(e) => setStock({...thisStock, medium: e.target.value})}
+                            defaultValue={thisStock.medium}
                             thisHeight={"40px"}
                         />
                         <TextBox 
                             id={'artist:'}
                             name={'artist:'}
-                            onChange={(e) => setArtist(e.target.value)}
-                            value={artist}
+                            onChange={(e) => setStock({...thisStock, artist: e.target.value})}
+                            defaultValue={thisStock.artist}
                             thisHeight={"40px"}
                         />
                     </div>
@@ -147,8 +154,8 @@ const StockEditDeleteForm = () => {
                     <h3>Status</h3>
                     <FauxRadio 
                         children={'sold'}
-                        onChange={(e) => setStatus(e.target.value)}
-                        value={status}
+                        onChange={(e) => setStock({...thisStock, status: e.target.value})}
+                        value={thisStock.status}
                     />
                 </BoxWithDropshadow>
                 <BoxWithDropshadow style={styles.archived}>
@@ -157,19 +164,19 @@ const StockEditDeleteForm = () => {
                         children={'archived'}
                         toggleId={'archived'}
                         toggleName={'archived'}
-                        onChange={(e) => setArchived(e.target.value)}
-                        value={archived}
+                        onChange={(e) => setStock({...thisStock, archived: e.target.value})}
+                        value={thisStock.archived}
                     />
                 </BoxWithDropshadow>
                 <BoxWithDropshadow >
                     <div style={styles.finalButtons}>
                         <ButtonBlack
                             children={'Save'}
-                            onClick={handelSubmit}
+                            onClick={handleSubmit}
                         />
                         <ButtonBlack
                             children={'Delete'}
-                            onClick={handelDelete}
+                            onClick={handleDelete}
                         />
                     </div>
                 </BoxWithDropshadow>

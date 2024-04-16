@@ -27,7 +27,7 @@ const StockCreationForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const stock = {thisStock}
+        const stock = thisStock
         console.log(stock)
         const response = await fetch('/api/stock/', {
             method:'POST',
