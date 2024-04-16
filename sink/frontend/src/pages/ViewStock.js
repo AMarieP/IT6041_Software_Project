@@ -95,15 +95,15 @@ const ViewStock = () => {
               />
             </div>
           </BoxWithDropshadow>
-          <div style={styles.Cards}>
-            <ul>
+          
+            <ul style={styles.cards}>
               {results.map((result) => (
                 <ProductCard product={result} >
 
                 </ProductCard>
               ))}
             </ul>
-          </div>
+          
         </div>
     );
 }
@@ -119,6 +119,9 @@ const styles = {
 
     },
     cards:{
-
+      display:'grid',
+      gridTemplateColumns:'repeat(auto-fill, minmax(30%, 1fr))',
+      gap:'20px',
+      padding:'0px',
     },
 }

@@ -47,8 +47,10 @@ function ProductCard({product}) {
     console.log(mediums())
   return (
     <div style={styles.container}>
-        {mainImage.length > 0 && (
+        {mainImage.length > 0 ? (
             <img style={styles.image} src={mainImage[0].url} alt="Product" />
+        ) : (
+            <div style={styles.noImageBox}>No Images</div>
         )}
         <div style={styles.textContainer}>
             <div style={styles.textLeft}>
@@ -72,7 +74,7 @@ function ProductCard({product}) {
 
 const styles = {
     container: {
-        width: '30%',
+        width: 'inherit',
         padding: '1em',
         backgroundColor: 'white',
         boxShadow: '2px 6px 5px lightgrey',
@@ -81,6 +83,12 @@ const styles = {
     image: {
         width: '100%',
         // height: '100%',
+    },
+    noImageBox: {
+        width:'100%',
+        height:'300px',
+        textAlign:'center',
+        backgroundColor:'lightgrey',
     },
     textContainer: {
         display: 'flex',
