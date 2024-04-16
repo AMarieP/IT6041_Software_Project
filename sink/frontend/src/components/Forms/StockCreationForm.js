@@ -10,17 +10,8 @@ import FauxRadio from "../FauxRadio/fauxRadio";
 import ImageTile from "../ImageUpload/ImageTile"
 
 const StockCreationForm = () => {
-    const [name, setName] = useState('')
-    const [description, setDescription] = useState('')
-    const [images, setImages] = useState([])
-    const [dimensions, setDimensions] = useState('')
-    const [medium, setMedium] = useState('')
-    const [artist, setArtist] = useState('')
-    const [status, setStatus] = useState('')
-    const [archived, setArchived] = useState('')
+
     const [error, setError] = useState('')
-
-
     const [thisStock, setStock] = useState({
         name: "",
         description: "",
@@ -53,14 +44,16 @@ const StockCreationForm = () => {
         if (response.ok) {
             setError(null)
             console.log('new stock added', json)
-            setName('')
-            setDescription('')
-            setImages('')
-            setDimensions('')
-            setMedium('')
-            setArtist('')
-            setStatus('')
-            setArchived(true)
+            setStock({
+                name: "",
+                description: "",
+                images: [],
+                dimensions: "",
+                medium: "",
+                artist: "",
+                status: "",
+                archived: true
+            })
         }
     }
 
