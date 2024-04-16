@@ -28,7 +28,7 @@ function ImagesBackendComponent({imageList, onImageListChange}) {
     "name": "",
     "alt": "",
     "url": "",
-    "main": Boolean,
+    // "main": Boolean,
   }
 
   
@@ -121,12 +121,6 @@ function ImagesBackendComponent({imageList, onImageListChange}) {
     closeModal();
   }
 
-
-
-
-
-  
-
     //Gets the image list and maps
     const images = thisImageList.map((img) => {
       
@@ -145,7 +139,7 @@ function ImagesBackendComponent({imageList, onImageListChange}) {
         <div style={styles.imagesContainer}>
             {images}
         </div>
-        <button onClick={openModal} >add new</button>
+        <button type='button' onClick={openModal} >add new</button>
         {isModal && (
           <ImageForm onClose={closeModal} onSave={handleImageSubmit} onDelete={handleImageDelete} activeImg={activeImage} />
         )}

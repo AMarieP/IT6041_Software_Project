@@ -26,6 +26,11 @@ function ImageForm({onClose, onSave, onDelete, activeImg}) {
   
   const [errorMessage, setErrorMessage] = useState("")
 
+  const [name, setName] = useState(activeImg.name)
+  const [url, setUrl] = useState(activeImg.url)
+  const [alt, setAlt] = useState(activeImg.alt)
+
+
   
   //Checks if valid url is given
   function isValidURL(urlString){
@@ -56,11 +61,12 @@ function ImageForm({onClose, onSave, onDelete, activeImg}) {
 
   //Handle form submission by passing new form to onSave function
   function handleSubmit(e) {
-    e.preventDefault();
-    
-    const form = e.target;
-    const formData = new FormData(form);
-    const formJson = Object.fromEntries(formData.entries());
+
+    const formJson = {
+      name: name,
+      alt: alt,
+      url: url
+    }
 
     const isUrlValid = isValidURL(formJson.url)
     const isAltEmpty = isString(formJson.alt)
@@ -89,20 +95,18 @@ function ImageForm({onClose, onSave, onDelete, activeImg}) {
     <div style={styles.container}>
       <BoxWithDropShadow>
         <h2>add image by url:</h2>
-        <form id="form" onSubmit={handleSubmit}>
-          <TextBox id={'imageName'} name={'name'} defaultValue={activeImg.name}></TextBox>
-          <TextBox id={'imageAlt'} name={'alt'} defaultValue={activeImg.alt}></TextBox>
-          <TextBox id={'imageUrl'} name={'url'} defaultValue={activeImg.url}></TextBox>
+          <TextBox id={'imageName'} name={'name'} defaultValue={name} onChange={(e) => setName(e.target.value)}></TextBox>
+          <TextBox id={'imageAlt'} name={'alt'} defaultValue={alt} onChange={(e) => setAlt(e.target.value)}></TextBox>
+          <TextBox id={'imageUrl'} name={'url'} defaultValue={url} onChange={(e) => setUrl(e.target.value)}></TextBox>
           {/* <SliderToggle toggleName={'isMain'} toggleId={'imageOrder'} defaultChecked={activeImg.main}>Main Image</SliderToggle> */}
           <br/>
           <p style={styles.errorMessage}>{errorMessage}</p>
           <br/>
           <div style={styles.buttonContainer}>
-            <ButtonBlack type="submit">save</ButtonBlack>
+            <ButtonBlack type="button" onClick={handleSubmit}>save</ButtonBlack>
             <ButtonWhite type="button" onClick={onDelete}>delete</ButtonWhite>
             <ButtonWhite type="button" onClick={onClose}>close</ButtonWhite>
           </div>
-        </form>
       </BoxWithDropShadow>
     </div>
   )
