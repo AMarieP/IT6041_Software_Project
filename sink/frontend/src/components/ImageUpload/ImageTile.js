@@ -108,7 +108,6 @@ function ImagesBackendComponent({imageList, onImageListChange}) {
   const handleImageDelete = () => {
 
     const imageIndex = thisImageList.indexOf(activeImage);
-    console.log(activeImage)
 
     //If the image can be found in the array
     if (thisImageList[imageIndex]) {
@@ -126,7 +125,6 @@ function ImagesBackendComponent({imageList, onImageListChange}) {
 
     //Gets the image list and maps
     const images = thisImageList.map((img) => {
-      
         return(
           <div key={img.id} style={thisImageList[0] === img ? styles.mainImg : styles.imgContainer} onClick={() => {openModal(); setActiveImage(img); console.log(thisImageList)}} >
             <img src={img.url} alt={img.alt} style={styles.image} />
@@ -136,10 +134,13 @@ function ImagesBackendComponent({imageList, onImageListChange}) {
         
     })
 
+
+
+
     return (
       <div style={styles.container}>
         <div style={styles.imagesContainer}>
-            {images}
+            {thisImageList.length > 0 ? images : <div style={styles.noImages}>no images yet! click 'add new' to start adding images. </div>}
         </div>
         <br/>
         <ButtonBlack type='button' onClick={openModal} >add new</ButtonBlack>
@@ -153,10 +154,9 @@ function ImagesBackendComponent({imageList, onImageListChange}) {
   const styles = {
     container: {
         width: '100%',
-        minHeight: '50vh',
         display: 'flex',
         flexFlow: 'column nowrap',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
     },
 
 
@@ -202,6 +202,16 @@ function ImagesBackendComponent({imageList, onImageListChange}) {
 
     button: {
         width: '100%'
+
+    },
+
+    noImages: {
+      width: '100%',
+      gridColumnStart: 1,
+      gridColumnEnd: 4,
+      fontFamily: "Roboto, sans-serif",
+      fontWeight: 300,
+      fontStyle: 'italic',
 
     }
 
