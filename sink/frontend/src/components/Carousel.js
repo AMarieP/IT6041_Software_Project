@@ -51,7 +51,7 @@ export default function Carousel({images}) {
 
   return (
     <section style={styles.container}>
-        <div>
+        <div style={styles.cont}>
             <section style={styles.arrows}>
                 <button style={styles.arrowButton} onClick={() => ArrowButtons('left')}>left</button>
                 <button style={styles.arrowButton} onClick={() => ArrowButtons('right')}>right</button>
@@ -68,24 +68,29 @@ export default function Carousel({images}) {
 
 const styles = {
     container: {
+        width: '100%',
+        position: 'relative',
 
     },
+
     activeImg: {
         width: '100%',
-        height: '60vh',
-        objectFit: 'cover',
+        height: '80vh',
+        objectFit: 'contain',
         overflow: 'hidden',
+        // backgroundColor: 'lightGrey'
 
     },
     arrows: {
         position: 'absolute',
         zIndex: '2',
         width: '100%',
-        height: '60vh',
+        height: '80%',
         display: 'flex',
         flexFlow: 'row nowrap',
         alignContent: 'space-between',
         justifyContent: 'space-between',
+        // visibility: 'hidden'
     },
     arrowButton: {
         opacity: '0.6',

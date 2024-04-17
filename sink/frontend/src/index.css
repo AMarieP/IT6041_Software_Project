@@ -37,3 +37,23 @@ p{
   font-style: normal;
 
 }
+
+
+.mediumBold{
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.lightItalic{
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.light{
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+
+}

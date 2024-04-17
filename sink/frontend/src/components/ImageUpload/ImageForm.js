@@ -115,11 +115,11 @@ function ImageForm({onClose, onSave, onDelete, activeImg}) {
 
 const styles = {
   container: {
-    position: 'absolute',
-    zIndex: 10,
-    left: '50vw',
-    top: '50vh',
-    transform: 'translate(-50%, -50%)',
+    top: '20vh',
+    left: '35vw',
+    zIndex: 5,
+    position: 'fixed',
+    width: '30vw', 
   },
   buttonContainer: {
     display: 'flex',
