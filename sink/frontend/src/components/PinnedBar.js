@@ -7,9 +7,15 @@ function PinnedBar({save, discard, preview}) {
   return (
     <div style={styles.container}>
         <div style={styles.buttonContainer}>
-            <ButtonBlack onClick={save}>save</ButtonBlack>
-            <ButtonWhite onClick={discard}>discard</ButtonWhite>
-            <ButtonWhite onClick={preview}>preview</ButtonWhite>
+            <div style={styles.button}>
+                <ButtonBlack onClick={save}>save</ButtonBlack>
+            </div>
+            <div style={styles.button}>
+                <ButtonWhite onClick={discard}>discard</ButtonWhite>
+            </div>
+            <div style={styles.button}>
+                <ButtonWhite onClick={preview}>preview</ButtonWhite>
+            </div>
         </div>
 
     </div>
@@ -23,16 +29,20 @@ const styles = {
         right: 0,
         zIndex: 5,
         position: 'fixed',
-        width: '80%',
+        width: '100%',
         height: '15vh',
         borderTop: '1px solid black'
     },
     buttonContainer: {
         display: 'flex',
-        flex: 'row nowrap',
+        flex: 'row',
         justifyContent: 'space-around',
-        height: '100%',
-        width: '50%'
+        alignItems: 'center',
+        margin: '0 20%',
+        height: '15vh',
+    },
+    button: {
+        width: '10vw'
     }
 }
 
