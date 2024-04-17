@@ -6,9 +6,11 @@ import SliderToggle from "../SliderToggle/sliderToggle"
 import BoxWithDropshadow from "../boxWithDropshadow"
 import TextBox from "../textBox"
 import TextArea from "../textArea"
-import FauxCheckButton from "../FauxRadio/fauxRadio"
+import FauxCheckButton from "../FauxRadioButton/FauxRadioButton";
 import ButtonBlack from "../buttons/buttonBlack"
+import ButtonWhite from "../buttons/buttonWhite";
 import ImageTile from "../ImageUpload/ImageTile"
+import PinnedBar from '../PinnedBar'
 
 
 const StockEditDeleteForm = () => {
@@ -28,6 +30,7 @@ const StockEditDeleteForm = () => {
     const navigate = useNavigate()
 
     //Creates the choices for the radio button
+    //Creates the choices for the radio button
     const radioButtonChoices = [
         {
             value: 'enquire',
@@ -41,7 +44,12 @@ const StockEditDeleteForm = () => {
             value: 'sold',
             name: 'sold',
         },
+        {
+            value: 'showPrice',
+            name: 'show price',
+        },
     ]
+    
     //prefills sections of the form
     useEffect(()=>{
         getProductDetails(id)
@@ -113,7 +121,7 @@ const StockEditDeleteForm = () => {
         <form style={styles.StockCreationForm}>
             <div style={styles.leftSide}>
                 <BoxWithDropshadow>
-                    <h3>Description</h3>
+                    <h2>Description</h2>
                     <div style={styles.stockDescription}>
                         <TextBox
                             id={'name'}
@@ -133,12 +141,12 @@ const StockEditDeleteForm = () => {
                 </BoxWithDropshadow>
                 
                 <BoxWithDropshadow style={styles.images}>
-                    <h3>Images</h3>
+                    <h2>Images</h2>
                     <ImageTile onImageListChange={(e) => setStock({...thisStock, images: e})} imageList={thisStock.images}/> 
 
                 </BoxWithDropshadow>
                 <BoxWithDropshadow >
-                    <h3>Details</h3>
+                    <h2>Details</h2>
                     <div style={styles.details}>
                         <TextBox 
                             id={'dimensions:'}
@@ -166,13 +174,20 @@ const StockEditDeleteForm = () => {
             </div>
             <div style={styles.rightSide}>
                 <BoxWithDropshadow style={styles.status}>
-                    <div style={styles.status}>
+                    <div style={styles.status}> 
                         <h2>Status</h2>
                         <FauxCheckButton name={'status'} array={radioButtonChoices} onChange={(e) => setStock({...thisStock, status: e.target.value})} />
+                        <TextBox
+                                id={'price'}
+                                name={'price:'}
+                                defaultValue={thisStock.price} 
+                                thisHeight={'40px'}
+                                onChange={(e) => setStock({...thisStock, price: e.target.value})}
+                            />
                     </div>
                 </BoxWithDropshadow>
                 <BoxWithDropshadow style={styles.archived}>
-                    <h3>Archived</h3>
+                    <h2>Archived</h2>
                     <SliderToggle 
                         children={'archived'}
                         toggleId={'archived'}
@@ -183,20 +198,19 @@ const StockEditDeleteForm = () => {
                 </BoxWithDropshadow>
                 <BoxWithDropshadow >
                     <div style={styles.finalButtons}>
-                        <ButtonBlack
-                            children={'Save'}
-                            onClick={handleSubmit}
-                        />
-                        <ButtonBlack
-                            children={'Delete'}
+                        <ButtonWhite
+                            children={'delete this listing'}
                             onClick={handleDelete}
                         />
                     </div>
                 </BoxWithDropshadow>
                 {error && <div>{error}</div>}
             </div>
+        <PinnedBar save={handleSubmit} />
+
 
         </form>
+
     )
 }
 
@@ -232,6 +246,10 @@ const styles = {
         gap:'20px'
     },
     status:{
+        display:'flex',
+        flexDirection: 'column',
+        width: '100%',
+        gap: '0.3rem'
 
     },
     archived:{

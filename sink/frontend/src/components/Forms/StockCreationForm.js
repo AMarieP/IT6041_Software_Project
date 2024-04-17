@@ -6,9 +6,9 @@ import BoxWithDropshadow from "../boxWithDropshadow"
 import TextBox from "../textBox"
 import TextArea from "../textArea"
 import ButtonBlack from "../buttons/buttonBlack";
-import FauxRadio from "../FauxRadio/fauxRadio";
 import FauxCheckButton from "../FauxRadioButton/FauxRadioButton";
 import ImageTile from "../ImageUpload/ImageTile"
+import PinnedBar from "../PinnedBar";
 
 const StockCreationForm = () => {
 
@@ -21,7 +21,8 @@ const StockCreationForm = () => {
         medium: "",
         artist: "",
         status: "",
-        archived: ""
+        archived: "",
+        price: "",
     })
     
 
@@ -38,6 +39,10 @@ const StockCreationForm = () => {
         {
             value: 'sold',
             name: 'sold',
+        },
+        {
+            value: 'showPrice',
+            name: 'show price',
         },
     ]
 
@@ -136,6 +141,13 @@ const StockCreationForm = () => {
                     <div style={styles.status}> 
                     <h2>Status</h2>
                     <FauxCheckButton name={'status'} array={radioButtonChoices} onChange={(e) => setStock({...thisStock, status: e.target.value})} />
+                    <TextBox
+                            id={'price'}
+                            name={'price:'}
+                            defaultValue={thisStock.price} 
+                            thisHeight={'40px'}
+                            onChange={(e) => setStock({...thisStock, price: e.target.value})}
+                        />
                     </div>
                 </BoxWithDropshadow>
                 <BoxWithDropshadow style={styles.archived}>
@@ -148,17 +160,10 @@ const StockCreationForm = () => {
                         value={thisStock.archived}
                     />
                 </BoxWithDropshadow>
-                <BoxWithDropshadow >
-                    <div style={styles.finalButtons}>
-                        <ButtonBlack
-                            children={'Save'}
-                            onClick={handleSubmit}
-                        />
-                    </div>
-                </BoxWithDropshadow>
+            
                 {error && <div>{error}</div>}
             </div>
-
+        <PinnedBar save={handleSubmit} />
         </form>
     )
 }
