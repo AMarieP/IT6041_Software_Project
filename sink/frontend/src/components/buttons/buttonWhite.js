@@ -21,6 +21,8 @@ const styles = {
         border: '1px solid black',
         borderRadius: '4px',
         boxShadow: '0px 2px 3px lightgrey',
+        textTransform: 'lowercase',
+        width: '100%'
 
     },
     text: {
