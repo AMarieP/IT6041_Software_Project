@@ -38,8 +38,14 @@ import ButtonWhite from '../components/buttons/buttonWhite'
 
 const Preview = ({item}) => {
     
-    //Changes display based on 
+    
+    //Onclick handler for when button is clicked to enquire
     const buttonFunction = () => {
+
+    }
+
+    //Changes display based on 
+    const buttonDisplay = () => {
         if(item.status === 'enquire'){
             //Send to enquiry form
             return (
@@ -55,7 +61,11 @@ const Preview = ({item}) => {
         if(item.status === 'underNegotiation'){
 
             return(
-                <p>under negotiation</p>
+                <>   
+                <p>under negotiation</p>         
+                <ButtonWhite onClick={buttonFunction} >enquire</ButtonWhite>
+                </>
+                
             )
         }
         if(item.status === 'price'){
@@ -81,7 +91,7 @@ const Preview = ({item}) => {
             <h3 style={styles.details} className='mediumBold' >{item.dimensions}</h3>
             <h3 style={styles.details} className='mediumBold' >{item.medium}</h3>
             <h3 style={styles.details} className='lightItalic' >{item.artist}</h3>
-            {buttonFunction}
+            {buttonDisplay}
             <br />
             <br />
             <p className='light' >{item.description}</p>
