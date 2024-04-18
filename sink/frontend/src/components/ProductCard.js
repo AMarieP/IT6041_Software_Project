@@ -38,8 +38,11 @@ const testProduct = {
 function ProductCard({product}) {
 
     //Find main image
-    const mainImage = product.images.filter(image => image.order === 1)
+    // const mainImage = product.images.filter(image => image.order === 1)
 
+
+    const image = product.images[0].url
+    
     //Space and comma added to mediums array if needed
     const mediums = ()  => {
          return product.medium.length > 1 ? product.medium.join(', ') : product.medium
@@ -49,8 +52,9 @@ function ProductCard({product}) {
   return (
     <Link to={`/stock/edit/${product._id}`} style={styles.cardLink}>
         <div style={styles.container}>
-            {mainImage.length > 0 ? (
-                <img style={styles.image} src={mainImage[0].url} alt="Product" />
+            {image ? (
+                <img style={styles.image} src={product.images[0].url} alt="Product" />
+                
             ) : (
                 <div style={styles.noImageBox}>No Images</div>
             )}
