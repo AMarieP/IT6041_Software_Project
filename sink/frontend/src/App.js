@@ -42,19 +42,19 @@ function App() {
             />
             <Route
               path = "/framing/moulding/new"
-              element = {user ? <MouldingCreate/> : <Navigate to="/all-matteboard-moulding" />}
+              element = {user ? <MouldingCreate/> : <Navigate to="/framing" />}
             />
             <Route
               path = "/framing/matteboard/new"
-              element = {user ? <MatteboardCreate/> : <Navigate to="/all-matteboard-moulding" />}
+              element = {user ? <MatteboardCreate/> : <Navigate to="/framing" />}
             />
             <Route
               path = "/framing/moulding/edit/:id"
-              element = {user ? <MouldingUpdate/> : <Navigate to="/all-matteboard-moulding" />}
+              element = {user ? <MouldingUpdate/> : <Navigate to="/framing" />}
             />
             <Route
               path = "/framing/matteboard/edit/:id"
-              element = {user ? <MatteboardUpdate/> : <Navigate to="/all-matteboard-moulding" />}
+              element = {user ? <MatteboardUpdate/> : <Navigate to="/framing" />}
             />
             <Route
               path = "/stock/new"

@@ -1,6 +1,6 @@
 import React from 'react'
-import Carousel from '../components/Carousel'
-import ButtonWhite from '../components/buttons/buttonWhite'
+import Carousel from './Carousel'
+import ButtonWhite from './buttons/buttonWhite'
 
 
 const Preview = ({item}) => {
