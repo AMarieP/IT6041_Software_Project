@@ -50,6 +50,7 @@ const UpdateStockForm = () => {
   //prefills sections of the form
   useEffect(() => {
     getProductDetails(id);
+
   }, []);
 
   const getProductDetails = async (id) => {
@@ -59,7 +60,7 @@ const UpdateStockForm = () => {
       name: singleStock.name,
       description: singleStock.description,
       images: singleStock.images,
-      dimensions: singleStock.images,
+      dimensions: singleStock.dimensions,
       medium: singleStock.medium,
       artist: singleStock.artist,
       status: singleStock.status,
@@ -72,6 +73,7 @@ const UpdateStockForm = () => {
     e.preventDefault();
 
     const stock = thisStock;
+
 
     const response = await fetch(`/api/stock/${id}`, {
       method: "PATCH",
