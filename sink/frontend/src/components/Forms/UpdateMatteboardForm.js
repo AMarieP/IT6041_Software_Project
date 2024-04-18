@@ -6,46 +6,24 @@ import SliderToggle from "../SliderToggle/sliderToggle";
 import BoxWithDropshadow from "../boxWithDropshadow";
 import TextBox from "../textBox";
 import TextArea from "../textArea";
-import FauxCheckButton from "../FauxRadioButton/FauxRadioButton";
 import ButtonWhite from "../buttons/buttonWhite";
 import ImageTile from "../ImageUpload/ImageTile";
 import PinnedBar from "../PinnedBar";
 
-const StockEditDeleteForm = () => {
+const UpdateMatteboardForm = () => {
   const [error, setError] = useState("");
-  const [thisStock, setStock] = useState({
+  const [thisMatteboard, setMatteboard] = useState({
     name: "",
+    depth: "",
+    colours: "",
+    finish: "",
+    material: "",
+    archived: "",
     description: "",
     images: [],
-    dimensions: "",
-    medium: "",
-    artist: "",
-    status: "",
-    archived: "",
   });
   const { id } = useParams();
   const navigate = useNavigate();
-
-  //Creates the choices for the radio button
-  //Creates the choices for the radio button
-  const radioButtonChoices = [
-    {
-      value: "enquire",
-      name: "enquire",
-    },
-    {
-      value: "underNegotiation",
-      name: "under negotiation",
-    },
-    {
-      value: "sold",
-      name: "sold",
-    },
-    {
-      value: "showPrice",
-      name: "show price",
-    },
-  ];
 
   //prefills sections of the form
   useEffect(() => {
@@ -55,15 +33,15 @@ const StockEditDeleteForm = () => {
   const getProductDetails = async (id) => {
     const response = await fetch(`/api/Stock/${id}`);
     const singleStock = await response.json();
-    setStock({
+    setMatteboard({
       name: singleStock.name,
+      depth: singleStock.depth,
+      colours: singleStock.colours,
+      finish: singleStock.finish,
+      material: singleStock.material,
+      archived: singleStock.archived,
       description: singleStock.description,
       images: singleStock.images,
-      dimensions: singleStock.images,
-      medium: singleStock.medium,
-      artist: singleStock.artist,
-      status: singleStock.status,
-      archived: true,
     });
   };
 
@@ -71,9 +49,9 @@ const StockEditDeleteForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const stock = thisStock;
+    const stock = thisMatteboard;
 
-    const response = await fetch(`/api/stock/${id}`, {
+    const response = await fetch(`/api/mattebaord/${id}`, {
       method: "PATCH",
       body: JSON.stringify(stock),
       headers: {
@@ -87,14 +65,14 @@ const StockEditDeleteForm = () => {
     }
     if (response.ok) {
       setError(null);
-      alert("Stock Updated Successfully");
+      alert("Matteboard Updated Successfully");
     }
   };
 
   const handleDelete = async (e) => {
     e.preventDefault();
 
-    const response = await fetch(`/api/stock/${id}`, {
+    const response = await fetch(`/api/matteboard/${id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
@@ -106,10 +84,10 @@ const StockEditDeleteForm = () => {
       setError(error.message);
     }
     if (response.ok) {
-      alert("Stock Deleted");
+      alert("Matteboard Deleted");
       setError(null);
-      console.log("Stock item deleted successfully");
-      navigate("/ViewStock");
+      console.log("Matteboard item deleted successfully");
+      navigate("/ViewMatteboard");
     }
   };
 
@@ -122,18 +100,18 @@ const StockEditDeleteForm = () => {
             <TextBox
               id={"name"}
               name={"Name:"}
-              defaultValue={thisStock.name}
+              defaultValue={thisMatteboard.name}
               thisHeight={"40px"}
-              onChange={(e) => setStock({ ...thisStock, name: e.target.value })}
+              onChange={(e) => setMatteboard({ ...thisMatteboard, name: e.target.value })}
             />
             <TextArea
               formId={"description"}
               name={"description:"}
               thisHeight={"120px"}
               onChange={(e) =>
-                setStock({ ...thisStock, description: e.target.value })
+                setMatteboard({ ...thisMatteboard, description: e.target.value })
               }
-              value={thisStock.description}
+              value={thisMatteboard.description}
             />
           </div>
         </BoxWithDropshadow>
@@ -141,65 +119,53 @@ const StockEditDeleteForm = () => {
         <BoxWithDropshadow style={styles.images}>
           <h2>Images</h2>
           <ImageTile
-            onImageListChange={(e) => setStock({ ...thisStock, images: e })}
-            imageList={thisStock.images}
+            onImageListChange={(e) => setMatteboard({ ...thisMatteboard, images: e })}
+            imageList={thisMatteboard.images}
           />
         </BoxWithDropshadow>
         <BoxWithDropshadow>
           <h2>Details</h2>
           <div style={styles.details}>
             <TextBox
-              id={"dimensions:"}
-              name={"dimensions:"}
+              id={"depth:"}
+              name={"depth:"}
               onChange={(e) =>
-                setStock({ ...thisStock, dimensions: e.target.value })
+                setMatteboard({ ...thisMatteboard, depth: e.target.value })
               }
-              defaultValue={thisStock.dimensions}
+              defaultValue={thisMatteboard.depth}
               thisHeight={"40px"}
             />
             <TextBox
-              id={"medium:"}
-              name={"medium:"}
+              id={"colours:"}
+              name={"colours:"}
               onChange={(e) =>
-                setStock({ ...thisStock, medium: e.target.value })
+                setMatteboard({ ...thisMatteboard, colours: e.target.value })
               }
-              defaultValue={thisStock.medium}
+              defaultValue={thisMatteboard.colours}
               thisHeight={"40px"}
             />
             <TextBox
-              id={"artist:"}
-              name={"artist:"}
+              id={"finish:"}
+              name={"finish:"}
               onChange={(e) =>
-                setStock({ ...thisStock, artist: e.target.value })
+                setMatteboard({ ...thisMatteboard, finish: e.target.value })
               }
-              defaultValue={thisStock.artist}
+              defaultValue={thisMatteboard.finish}
+              thisHeight={"40px"}
+            />
+            <TextBox
+              id={"material:"}
+              name={"material:"}
+              onChange={(e) =>
+                setMatteboard({ ...thisMatteboard, material: e.target.value })
+              }
+              defaultValue={thisMatteboard.material}
               thisHeight={"40px"}
             />
           </div>
         </BoxWithDropshadow>
       </div>
       <div style={styles.rightSide}>
-        <BoxWithDropshadow style={styles.status}>
-          <div style={styles.status}>
-            <h2>Status</h2>
-            <FauxCheckButton
-              name={"status"}
-              array={radioButtonChoices}
-              onChange={(e) =>
-                setStock({ ...thisStock, status: e.target.value })
-              }
-            />
-            <TextBox
-              id={"price"}
-              name={"price:"}
-              defaultValue={thisStock.price}
-              thisHeight={"40px"}
-              onChange={(e) =>
-                setStock({ ...thisStock, price: e.target.value })
-              }
-            />
-          </div>
-        </BoxWithDropshadow>
         <BoxWithDropshadow style={styles.archived}>
           <h2>Archived</h2>
           <SliderToggle
@@ -207,9 +173,9 @@ const StockEditDeleteForm = () => {
             toggleId={"archived"}
             toggleName={"archived"}
             onChange={(e) =>
-              setStock({ ...thisStock, archived: e.target.value })
+              setMatteboard({ ...thisMatteboard, archived: e.target.value })
             }
-            value={thisStock.archived}
+            value={thisMatteboard.archived}
           />
         </BoxWithDropshadow>
         <BoxWithDropshadow>
@@ -256,17 +222,13 @@ const styles = {
     flexDirection: "column",
     gap: "20px",
   },
-  status: {
-    display: "flex",
-    flexDirection: "column",
-    width: "100%",
-    gap: "0.3rem",
+  archived: {
+
   },
-  archived: {},
   finalButtons: {
     display: "flex",
     flexDirection: "column",
   },
 };
 
-export default StockEditDeleteForm;
+export default UpdateMatteboardForm;
