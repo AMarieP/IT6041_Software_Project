@@ -31,14 +31,15 @@ const Navbar = () => {
 
     return (
         <nav style={{ ...styles.nav, ...(hasScrolled && styles.navScrolled) }}>
-            <Link to = "/Home" style={styles.title}>
+            <Link to = "/" style={styles.title}>
                 sink
             </Link>
             <ul style={styles.ul}>
-                <CustomLink to="/stock">Stock</CustomLink>
-                <CustomLink to="/ViewFandM">Frames And Matteboards</CustomLink>
-                {user && <CustomLink to="/StockCreate">Add new stock</CustomLink>}
-                {user && <CustomLink to={`/StockEditDelete/${'661475946dab09cfb9453495'}`}>Update and delete stock</CustomLink>}
+                {user && <CustomLink to="/Stock">Stock</CustomLink>}
+                {user && <CustomLink to="/framing">Framing</CustomLink>}
+                {user && <CustomLink to="/Stock/new">Add Stock</CustomLink>}
+                {user && <CustomLink to="/framing/matteboard/new">Add Matteboard</CustomLink>}
+                {user && <CustomLink to="/framing/molding/new">Add Molding</CustomLink>}
             </ul>
             <div style={styles.logoutButton}>
                 {user && <ButtonBlack onClick={handelLogout} >Logout</ButtonBlack>}

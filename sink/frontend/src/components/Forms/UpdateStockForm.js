@@ -112,6 +112,14 @@ const UpdateStockForm = () => {
       navigate("/ViewStock");
     }
   };
+  const handlePreview = (e) => {
+    e.preventDefault()
+    const itemJson = JSON.stringify(thisStock)
+
+    const url = `/preview?stock=${encodeURIComponent(itemJson)}`
+   
+    window.open(url, "_blank", "noopener, noreferrer")
+  } 
 
   return (
     <form style={styles.StockCreationForm}>
@@ -222,7 +230,7 @@ const UpdateStockForm = () => {
         </BoxWithDropshadow>
         {error && <div>{error}</div>}
       </div>
-      <PinnedBar save={handleSubmit} />
+      <PinnedBar save={handleSubmit} preview={handlePreview}/>
     </form>
   );
 };

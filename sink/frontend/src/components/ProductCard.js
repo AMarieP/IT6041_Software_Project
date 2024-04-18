@@ -47,21 +47,22 @@ function ProductCard({product}) {
 
     console.log(mediums())
   return (
-
-    <div style={styles.container}>
-        {mainImage.length > 0 ? (
-            <img style={styles.image} src={mainImage[0].url} alt="Product" />
-        ) : (
-            <div style={styles.noImageBox}>No Images</div>
-        )}
-        <div style={styles.textContainer}>
-            <div style={styles.textLeft}>
-                <h1 style={styles.head} >{product.name}</h1>
-                <p style={styles.medium} >{mediums()}</p>
-                <p style={styles.dimensions} >{product.dimensions}</p>
-            </div>
-            <div style={styles.status}>
-                <i>{product.status}</i>
+    <Link to={`/stock/edit/${product._id}`} style={styles.cardLink}>
+        <div style={styles.container}>
+            {mainImage.length > 0 ? (
+                <img style={styles.image} src={mainImage[0].url} alt="Product" />
+            ) : (
+                <div style={styles.noImageBox}>No Images</div>
+            )}
+            <div style={styles.textContainer}>
+                <div style={styles.textLeft}>
+                    <h1 style={styles.head} >{product.name}</h1>
+                    <p style={styles.medium} >{mediums()}</p>
+                    <p style={styles.dimensions} >{product.dimensions}</p>
+                </div>
+                <div style={styles.status}>
+                    <i>{product.status}</i>
+                </div>
             </div>
         </div>
     </Link>
@@ -168,6 +169,11 @@ const styles = {
 
 
 
+    },
+    cardLink:{
+        textDecoration: 'none',
+        color: 'inherit',
+        cursor: 'inherit'
     },
 }
 

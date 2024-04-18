@@ -3,8 +3,8 @@ import Carousel from './Carousel'
 import ButtonWhite from './buttons/buttonWhite'
 
 
-const Preview = ({item}) => {
-    
+const Preview = ({ item }) => {
+
     
     //Onclick handler for when button is clicked to enquire
     const buttonFunction = () => {
@@ -51,14 +51,14 @@ const Preview = ({item}) => {
   return (
     <div style={styles.container}>
         <div style={styles.carousel}>
-        <Carousel images={item.images} />
+            <Carousel images={item.images} />
         </div>
         <section style={styles.info} >
             <h1 style={styles.title} >{item.name}</h1>
             <h3 style={styles.details} className='mediumBold' >{item.dimensions}</h3>
             <h3 style={styles.details} className='mediumBold' >{item.medium}</h3>
             <h3 style={styles.details} className='lightItalic' >{item.artist}</h3>
-            {buttonDisplay}
+            {buttonDisplay()}
             <br />
             <br />
             <p className='light' >{item.description}</p>
