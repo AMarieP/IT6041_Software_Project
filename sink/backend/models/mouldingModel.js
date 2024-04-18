@@ -25,13 +25,16 @@ const mouldingSchema = new Schema ({
     colour: [{
         type: String
     }],
-    timber: [{
+    materials: [{
         type: String
     }],
     dimensions: {
         type: String
     },
     description: {
+        type: String
+    },
+    archived: {
         type: String
     },
     images: [imageSchema],

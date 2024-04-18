@@ -16,7 +16,7 @@ const matteboardSchema = new Schema ({
         type: String,
         required: true
     },
-    thickness: {
+    depth: {
         type: String
     },
     colours: [{
@@ -29,6 +29,9 @@ const matteboardSchema = new Schema ({
         type: String
     },
     description: {
+        type: String
+    },
+    archived: {
         type: String
     },
     images: [imageSchema],

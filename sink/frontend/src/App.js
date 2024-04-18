@@ -2,16 +2,27 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
 import { useAuthContext } from './hooks/useAuthContext';
 //pages & components
+
+//Handles the layout of page
+import MainLayout from './components/MainLayout'
+
+//View Pages
+import Home from './pages/Home';
+import ViewListing from './pages/ViewListing';
+import ViewAllMatteboardAndMouldings from './pages/ViewAllMatteboardAndMoulding'
+import ViewAllStock from './pages/ViewAllStock';
+
+//Auth
 import Login from './pages/Login';
 import Signup from './pages/Signup';//this could be used after admin has been created
-import FandMcurd from './pages/FandMcurd';
+
+//CRUD FORMS
+import MatteboardCreate from './pages/MatteboardCreate';
+import MatteboardUpdate from './pages/MatteboardUpdate';
+import MouldingCreate from './pages/MouldingCreate';
+import MouldingUpdate from './pages/MouldingUpdate';
 import StockCreate from './pages/StockCreate';
-import ViewAListing from './pages/ViewAListing';
-import ViewFandM from './pages/ViewFandM';
-import ViewStock from './pages/ViewStock';
-import Home from './pages/Home';
-import StockEditDelete from './pages/StockEditDelete';
-import MainLayout from './components/MainLayout'
+import StockUpdate from './pages/StockUpdate';
 
 function App() {
   //user can be used to verify a user is logged in and redirect accordingly
@@ -30,35 +41,55 @@ function App() {
               element = {<Login/>}
             />
             <Route
-              path = "/FandMcurd"
-              element = {user ? <FandMcurd/> : <Navigate to="/ViewFandM" />}
+              path = "/framing/moulding/new"
+              element = {user ? <MouldingCreate/> : <Navigate to="/login" />}
             />
             <Route
-              path = "/StockCreate"
-              element = {user ? <StockCreate/> : <Navigate to="/ViewStock" />}
+              path = "/framing/matteboard/new"
+              element = {user ? <MatteboardCreate/> : <Navigate to="/login" />}
             />
             <Route
-              path = "/StockEditDelete/:id"
-              element = {user ? <StockEditDelete/> : <Navigate to="/ViewStock" />}
+              path = "/framing/moulding/edit/:id"
+              element = {user ? <MouldingUpdate/> : <Navigate to="/login" />}
             />
             <Route
-              path = "/ViewAListing"
-              element = {<ViewAListing/>}
+              path = "/framing/matteboard/edit/:id"
+              element = {user ? <MatteboardUpdate/> : <Navigate to="/login" />}
             />
             <Route
-              path = "/ViewFandM"
-              element = {<ViewFandM/>}
+              path = "/stock/new"
+              element = {user ? <StockCreate/> : <Navigate to="/login" />}
             />
             <Route
-              path = "/ViewStock"
-              element = {<ViewStock/>}
+              path = '/stock/edit/:id'
+              element = {user ? <StockUpdate/> : <Navigate to="/login" />}
             />
             <Route
-              path = "/Home"
+              path = "/stock/:id"
+              element = {<ViewListing/>}
+            />
+            <Route
+              path = "/framing/matteboard/:id"
+              element = {<ViewListing/>}
+            />
+            <Route
+              path = "/framing/moulding/:id"
+              element = {<ViewListing/>}
+            />
+            <Route
+              path = "/framing"
+              element = {<ViewAllMatteboardAndMouldings/>}
+            />
+            <Route
+              path = "/stock"
+              element = {<ViewAllStock/>}
+            />
+            <Route
+              path = "/home"
               element = {<Home/>}
             />
             <Route
-              path = "/Signup"
+              path = "/signup"
               element = {<Signup/>}
             />
           </Routes>

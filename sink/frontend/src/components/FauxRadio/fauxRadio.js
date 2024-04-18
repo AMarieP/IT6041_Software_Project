@@ -3,7 +3,7 @@ import './fauxRadio.css'
 
 /*This is a checkmark made to look like a radio button - hence the name :) */
 
-function FauxRadio({radName, radValue, children, radId,onChange}) {
+function FauxRadio({name, value, children, id,onChange}) {
 
 
   return (
@@ -11,9 +11,9 @@ function FauxRadio({radName, radValue, children, radId,onChange}) {
         {children}
         <input 
           type="checkbox" 
-          id={radId} 
-          value={radValue} 
-          name={radName} 
+          id={id} 
+          value={value} 
+          name={name} 
           onChange={onChange}
         />
         <div className="checkmark"></div>

@@ -1,10 +1,11 @@
-import StockCreationForm from '../components/Forms/StockCreationForm'
+import NewStockForm from '../components/Forms/NewStockForm'
+
 
 const StockCreate = () => {
 
 
     return <>
-        <StockCreationForm/>
+        <NewStockForm/>
     </>
 }
 

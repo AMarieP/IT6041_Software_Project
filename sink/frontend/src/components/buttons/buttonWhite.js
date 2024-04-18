@@ -8,7 +8,7 @@ Action is fed through OnClick prop
 function ButtonWhite({children, onClick, type}) {
   return (
     <button style={styles.button} onClick={onClick} type={type}>
-        <p>{children}</p>
+        <p style={styles.text}>{children}</p>
     </button>
   )
 }
@@ -17,11 +17,18 @@ const styles = {
     button:{
         backgroundColor: 'white',
         color: 'black',
-        padding: '0.4rem 2rem',
-        border: '2px solid black',
+        padding: '0.5rem 2rem',
+        border: '1px solid black',
         borderRadius: '4px',
         boxShadow: '0px 2px 3px lightgrey',
+        textTransform: 'lowercase',
+        width: '100%'
 
+    },
+    text: {
+      padding: 0,
+      margin: 0,
+      fontSize: '1rem'
     }
 }
 

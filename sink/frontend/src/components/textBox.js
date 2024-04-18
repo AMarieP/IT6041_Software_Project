@@ -9,7 +9,7 @@ and height can be altered using 'thisHeight' props
 */
 
 
-function TextBox({id, name, thisHeight,value='',onChange}) {
+function TextBox({id, name, thisHeight, defaultValue, onChange}) {
 
 
   const styles = {
@@ -18,7 +18,8 @@ function TextBox({id, name, thisHeight,value='',onChange}) {
       flexFlow: 'column nowrap',
       alignItems: 'flex-start',
       fontFamily: 'Roboto',
-      fontSize: '0.7rem',
+      fontSize: '0.9rem',
+      textTransform: 'lowercase',
       color: 'black',
       width: '100%' //Width should always be 100% parent
 
@@ -40,7 +41,7 @@ function TextBox({id, name, thisHeight,value='',onChange}) {
       type="text" 
       id={id} 
       name={name}
-      value={value}
+      defaultValue={defaultValue}
       onChange={onChange}
     />
 

@@ -32,6 +32,12 @@ const stockSchema = new Schema ({
     description: {
         type: String
     },
+    status:{
+        type: String,
+    },
+    price: {
+        type: String,
+    },
     
     images: [imageSchema],
 
