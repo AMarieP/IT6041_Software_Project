@@ -64,7 +64,7 @@ function ProductCard({product}) {
                 <i>{product.status}</i>
             </div>
         </div>
-    </Link>
+    </div>
   )
 }
 
