@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom"
 //importing components
 import SliderToggle from "../SliderToggle/sliderToggle";
 import BoxWithDropshadow from "../boxWithDropshadow";
