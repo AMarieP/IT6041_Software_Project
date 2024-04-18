@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 //IMPORTANT: FUntionality of finding main image may change
 
@@ -46,6 +47,7 @@ function ProductCard({product}) {
 
     console.log(mediums())
   return (
+
     <div style={styles.container}>
         {mainImage.length > 0 ? (
             <img style={styles.image} src={mainImage[0].url} alt="Product" />
@@ -57,18 +59,12 @@ function ProductCard({product}) {
                 <h1 style={styles.head} >{product.name}</h1>
                 <p style={styles.medium} >{mediums()}</p>
                 <p style={styles.dimensions} >{product.dimensions}</p>
-
             </div>
-            <div style={styles.textRight}>
-                <h1 style={styles.artist} >{product.artist}</h1>
-                <p style={styles.date} >{product.date}</p>
-
+            <div style={styles.status}>
+                <i>{product.status}</i>
             </div>
         </div>
-        <div style={styles.status}>
-            <i>{product.status}</i>
-        </div>
-    </div>
+    </Link>
   )
 }
 
