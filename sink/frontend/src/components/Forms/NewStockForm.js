@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { Link } from "react-router-dom"
 //importing components
 import SliderToggle from "../SliderToggle/sliderToggle";
 import BoxWithDropshadow from "../boxWithDropshadow";
@@ -76,6 +76,15 @@ const NewStockForm = () => {
       });
     }
   };
+
+  const handlePreview = (e) => {
+    e.preventDefault()
+    const itemJson = JSON.stringify(thisStock)
+
+    const url = `/preview?stock=${encodeURIComponent(itemJson)}`
+   
+    window.open(url, "_blank", "noopener, noreferrer")
+  } 
 
   return (
     <form style={styles.StockCreationForm}>
@@ -180,7 +189,7 @@ const NewStockForm = () => {
 
         {error && <div>{error}</div>}
       </div>
-      <PinnedBar save={handleSubmit} />
+      <PinnedBar save={handleSubmit} preview={handlePreview}/>
     </form>
   );
 };

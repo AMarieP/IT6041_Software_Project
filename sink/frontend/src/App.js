@@ -37,35 +37,39 @@ function App() {
         <MainLayout>
           <Routes>
             <Route
-              path = "/login"
-              element = {<Login/>}
+              path = "/"
+              element = {user ? <Home/> :<Navigate to="/Login"/>}
             />
             <Route
               path = "/framing/moulding/new"
-              element = {user ? <MouldingCreate/> : <Navigate to="/login" />}
+              element = {user ? <MouldingCreate/> : <Navigate to="/" />}
             />
             <Route
               path = "/framing/matteboard/new"
-              element = {user ? <MatteboardCreate/> : <Navigate to="/login" />}
+              element = {user ? <MatteboardCreate/> : <Navigate to="/" />}
             />
             <Route
               path = "/framing/moulding/edit/:id"
-              element = {user ? <MouldingUpdate/> : <Navigate to="/login" />}
+              element = {user ? <MouldingUpdate/> : <Navigate to="/" />}
             />
             <Route
               path = "/framing/matteboard/edit/:id"
-              element = {user ? <MatteboardUpdate/> : <Navigate to="/login" />}
+              element = {user ? <MatteboardUpdate/> : <Navigate to="/" />}
             />
             <Route
               path = "/stock/new"
-              element = {user ? <StockCreate/> : <Navigate to="/login" />}
+              element = {user ? <StockCreate/> : <Navigate to="/" />}
             />
             <Route
               path = '/stock/edit/:id'
-              element = {user ? <StockUpdate/> : <Navigate to="/login" />}
+              element = {user ? <StockUpdate/> : <Navigate to="/" />}
             />
             <Route
               path = "/stock/:id"
+              element = {<ViewListing/>}
+            />
+            <Route
+              path = "/preview"
               element = {<ViewListing/>}
             />
             <Route
@@ -85,9 +89,9 @@ function App() {
               element = {<ViewAllStock/>}
             />
             <Route
-              path = "/home"
-              element = {<Home/>}
-            />
+              path = "/login"
+              element = {<Login/>}
+              />
             <Route
               path = "/signup"
               element = {<Signup/>}

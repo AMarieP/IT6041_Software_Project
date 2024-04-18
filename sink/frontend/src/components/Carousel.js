@@ -21,9 +21,18 @@ export default function Carousel({images}) {
     
     
     //Maps all the thumbnail images
-    const thumbnail = images.map((image, index) => <div key={index} onClick={() => imageIsActive(images[index])}>
-                                            <img style={activeImage === images[index] ? styles.thumbnailActive : styles.thumbnail} src={image.url} />
-                                        </div>)
+    const thumbnail = images.map((image, index) => {
+        if (image && image.url) {
+            return(
+                <div key={index} onClick={() => imageIsActive(images[index])}>
+                <img style={activeImage === images[index] ? styles.thumbnailActive : styles.thumbnail} src={image.url} />
+            </div>
+            )
+        } else {
+            return null
+        }
+        
+        })
     
 
     //Sets Active Image According to buttons
@@ -57,7 +66,7 @@ export default function Carousel({images}) {
                 <button style={styles.arrowButton} onClick={() => ArrowButtons('right')}>right</button>
 
             </section>
-            <img src={activeImage.url} alt={activeImage.alt} style={styles.activeImg} />
+            {activeImage && <img src={activeImage.url} alt={activeImage.alt} style={styles.activeImg} />}
         </div>
         <div style={styles.thumbnails}>
             {thumbnail}
