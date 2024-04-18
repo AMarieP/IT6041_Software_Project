@@ -10,7 +10,7 @@ import FauxCheckButton from "../FauxRadioButton/FauxRadioButton";
 import ImageTile from "../ImageUpload/ImageTile";
 import PinnedBar from "../PinnedBar";
 
-const StockCreationForm = () => {
+const NewStockForm = () => {
   const [error, setError] = useState("");
   const [thisStock, setStock] = useState({
     name: "",
@@ -227,4 +227,4 @@ const styles = {
   },
 };
 
-export default StockCreationForm;
+export default NewStockForm;

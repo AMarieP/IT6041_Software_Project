@@ -7,7 +7,7 @@ import useCheckbox from "../hooks/useCheckbox"
 import ProductCard from "../components/ProductCard"
 
 
-const ViewStock = () => {
+const ViewAllStock = () => {
     const [search, setSearch] = useState('')
     const { checkedItems, handleCheckboxChange, isChecked } = useCheckbox()
     const [ results, setResults] = useState([])
@@ -108,7 +108,7 @@ const ViewStock = () => {
     );
 }
 
-export default ViewStock
+export default ViewAllStock
 
 const styles = {
     radioBtns:{

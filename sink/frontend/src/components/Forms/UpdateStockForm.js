@@ -11,7 +11,7 @@ import ButtonWhite from "../buttons/buttonWhite";
 import ImageTile from "../ImageUpload/ImageTile";
 import PinnedBar from "../PinnedBar";
 
-const StockEditDeleteForm = () => {
+const UpdateStockForm = () => {
   const [error, setError] = useState("");
   const [thisStock, setStock] = useState({
     name: "",
@@ -269,4 +269,4 @@ const styles = {
   },
 };
 
-export default StockEditDeleteForm;
+export default UpdateStockForm;
