@@ -2,39 +2,6 @@ import React from 'react'
 import Carousel from '../components/Carousel'
 import ButtonWhite from '../components/buttons/buttonWhite'
 
-// const testImages = [
-//     {
-//         name: "One",
-//         alt: "1",
-//         url: "https://upload.wikimedia.org/wikipedia/commons/0/00/The_Little_Fourteen-Year-Old_Dancer_MET_DP-14939-005.jpg",
-//     },
-//     {
-//         name: "Two",
-//         alt: "2",
-//         url: "https://upload.wikimedia.org/wikipedia/commons/c/cf/Bailarina_Degas_Washington.jpg",
-//     },
-//     {
-//         name: "Three",
-//         alt: "3",
-//         url: "https://upload.wikimedia.org/wikipedia/commons/e/e7/Edgar_Degas_La_Petite_Danseuse_de_Quatorze_Ans_cast_in_1997.jpg",
-//     },
-//     {
-//         name: "FOur",
-//         alt: "4",
-//         url: "https://upload.wikimedia.org/wikipedia/commons/2/2f/La_Petite_Danseuse_de_Quatorze_Ans_by_Edgard_Degas%2C_1881_-_Ny_Carlsberg_Glyptotek_-_Copenhagen_-_DSC09283.JPG",
-//     },
-//     {
-//         name: "Five",
-//         alt: "5",
-//         url: "https://upload.wikimedia.org/wikipedia/commons/f/f4/Little_Dancer_of_Fourteen_Years.jpg",
-//     },
-//     {
-//         name: 'LandscapeTest',
-//         alt: 'Lndscapetst',
-//         url: 'https://media.istockphoto.com/id/1406515149/photo/idyllic-remote-beach-destination.jpg?s=2048x2048&w=is&k=20&c=8Stgipk8fiFdpVFG3wytsfWknDl4acNSa15tBvE1jSM='
-//     }
-
-// ]
 
 const Preview = ({item}) => {
     

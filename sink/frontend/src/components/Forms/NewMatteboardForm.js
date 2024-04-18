@@ -5,53 +5,31 @@ import SliderToggle from "../SliderToggle/sliderToggle";
 import BoxWithDropshadow from "../boxWithDropshadow";
 import TextBox from "../textBox";
 import TextArea from "../textArea";
-import ButtonBlack from "../buttons/buttonBlack";
-import FauxCheckButton from "../FauxRadioButton/FauxRadioButton";
 import ImageTile from "../ImageUpload/ImageTile";
 import PinnedBar from "../PinnedBar";
 
-const StockCreationForm = () => {
+const NewMatteboardForm = () => {
   const [error, setError] = useState("");
-  const [thisStock, setStock] = useState({
+  const [thisMatteboard, setMatteboard] = useState({
     name: "",
+    depth: "",
+    colours: "",
+    finish: "",
+    material: "",
+    archived: "",
     description: "",
     images: [],
-    dimensions: "",
-    medium: "",
-    artist: "",
-    status: "",
-    archived: "",
-    price: "",
   });
 
-  //Creates the choices for the radio button
-  const radioButtonChoices = [
-    {
-      value: "enquire",
-      name: "enquire",
-    },
-    {
-      value: "underNegotiation",
-      name: "under negotiation",
-    },
-    {
-      value: "sold",
-      name: "sold",
-    },
-    {
-      value: "showPrice",
-      name: "show price",
-    },
-  ];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const stock = thisStock;
-    console.log(stock);
-    const response = await fetch("/api/stock/", {
+    const matteboard = thisMatteboard;
+    console.log(matteboard);
+    const response = await fetch("/api/matteboard/", {
       method: "POST",
-      body: JSON.stringify(stock),
+      body: JSON.stringify(matteboard),
       headers: {
         "content-type": "application/json",
       },
@@ -63,16 +41,16 @@ const StockCreationForm = () => {
     }
     if (response.ok) {
       setError(null);
-      console.log("new stock added", json);
-      setStock({
+      console.log("new matteboard added", json);
+      setMatteboard({
         name: "",
+        depth: "",
+        colours: "",
+        finish: "",
+        material: "",
+        archived: "",
         description: "",
         images: [],
-        dimensions: "",
-        medium: "",
-        artist: "",
-        status: "",
-        archived: true,
       });
     }
   };
@@ -86,18 +64,18 @@ const StockCreationForm = () => {
             <TextBox
               id={"name"}
               name={"Name:"}
-              defaultValue={thisStock.name}
+              defaultValue={thisMatteboard.name}
               thisHeight={"40px"}
-              onChange={(e) => setStock({ ...thisStock, name: e.target.value })}
+              onChange={(e) => setMatteboard({ ...thisMatteboard, name: e.target.value })}
             />
             <TextArea
               formId={"description"}
               name={"description:"}
               thisHeight={"120px"}
               onChange={(e) =>
-                setStock({ ...thisStock, description: e.target.value })
+                setMatteboard({ ...thisMatteboard, description: e.target.value })
               }
-              value={thisStock.description}
+              value={thisMatteboard.description}
             />
           </div>
         </BoxWithDropshadow>
@@ -105,38 +83,47 @@ const StockCreationForm = () => {
         <BoxWithDropshadow style={styles.images}>
           <h2>Images</h2>
           <ImageTile
-            onImageListChange={(e) => setStock({ ...thisStock, images: e })}
-            imageList={thisStock.images}
+            onImageListChange={(e) => setMatteboard({ ...thisMatteboard, images: e })}
+            imageList={thisMatteboard.images}
           />
         </BoxWithDropshadow>
         <BoxWithDropshadow>
           <h2>Details</h2>
           <div style={styles.details}>
             <TextBox
-              id={"dimensions:"}
-              name={"dimensions:"}
+              id={"materials:"}
+              name={"materials:"}
               onChange={(e) =>
-                setStock({ ...thisStock, dimensions: e.target.value })
+                setMatteboard({ ...thisMatteboard, materials: e.target.value })
               }
-              defaultValue={thisStock.dimensions}
+              defaultValue={thisMatteboard.materials}
               thisHeight={"40px"}
             />
             <TextBox
-              id={"medium:"}
-              name={"medium:"}
+              id={"finish:"}
+              name={"finish:"}
               onChange={(e) =>
-                setStock({ ...thisStock, medium: e.target.value })
+                setMatteboard({ ...thisMatteboard, finish: e.target.value })
               }
-              defaultValue={thisStock.medium}
+              defaultValue={thisMatteboard.finish}
               thisHeight={"40px"}
             />
             <TextBox
-              id={"artist:"}
-              name={"artist:"}
+              id={"depth:"}
+              name={"depth:"}
               onChange={(e) =>
-                setStock({ ...thisStock, artist: e.target.value })
+                setMatteboard({ ...thisMatteboard, depth: e.target.value })
               }
-              defaultValue={thisStock.artist}
+              defaultValue={thisMatteboard.depth}
+              thisHeight={"40px"}
+            />
+            <TextBox
+              id={"colours:"}
+              name={"colours:"}
+              onChange={(e) =>
+                setMatteboard({ ...thisMatteboard, colours: e.target.value })
+              }
+              defaultValue={thisMatteboard.colours}
               thisHeight={"40px"}
             />
           </div>
@@ -144,27 +131,6 @@ const StockCreationForm = () => {
       </div>
 
       <div style={styles.rightSide}>
-        <BoxWithDropshadow>
-          <div style={styles.status}>
-            <h2>Status</h2>
-            <FauxCheckButton
-              name={"status"}
-              array={radioButtonChoices}
-              onChange={(e) =>
-                setStock({ ...thisStock, status: e.target.value })
-              }
-            />
-            <TextBox
-              id={"price"}
-              name={"price:"}
-              defaultValue={thisStock.price}
-              thisHeight={"40px"}
-              onChange={(e) =>
-                setStock({ ...thisStock, price: e.target.value })
-              }
-            />
-          </div>
-        </BoxWithDropshadow>
         <BoxWithDropshadow style={styles.archived}>
           <h2>Archived</h2>
           <SliderToggle
@@ -172,9 +138,9 @@ const StockCreationForm = () => {
             toggleId={"archived"}
             toggleName={"archived"}
             onChange={(e) =>
-              setStock({ ...thisStock, archived: e.target.value })
+              setMatteboard({ ...thisMatteboard, archived: e.target.value })
             }
-            value={thisStock.archived}
+            value={thisMatteboard.archived}
           />
         </BoxWithDropshadow>
 
@@ -202,7 +168,9 @@ const styles = {
     gap: "20px",
   },
 
-  images: {},
+  images: {
+    
+  },
   details: {
     display: "flex",
     flexDirection: "column",
@@ -214,12 +182,7 @@ const styles = {
     flexDirection: "column",
     gap: "20px",
   },
-  status: {
-    display: "flex",
-    flexDirection: "column",
-    width: "100%",
-    gap: "0.3rem",
-  },
+
   archived: {},
   finalButtons: {
     display: "flex",
@@ -227,4 +190,4 @@ const styles = {
   },
 };
 
-export default StockCreationForm;
+export default NewMatteboardForm;

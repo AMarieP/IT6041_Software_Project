@@ -22,6 +22,7 @@ const styles = {
         borderRadius: '4px',
         boxShadow: '0px 2px 3px lightgrey',
         textTransform: 'lowercase',
+        width: '100%'
     },
     text: {
       padding: 0,

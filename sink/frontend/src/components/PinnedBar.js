@@ -3,13 +3,16 @@ import ButtonBlack from './buttons/buttonBlack'
 import ButtonWhite from './buttons/buttonWhite'
 
 
-function PinnedBar({save, discard, preview}) {
+function PinnedBar({save, preview}) {
   return (
     <div style={styles.container}>
         <div style={styles.buttonContainer}>
-            <ButtonBlack onClick={save}>save</ButtonBlack>
-            <ButtonWhite onClick={discard}>discard</ButtonWhite>
-            <ButtonWhite onClick={preview}>preview</ButtonWhite>
+            <div style={styles.button}>
+                <ButtonBlack onClick={save}>save</ButtonBlack>
+            </div>
+            <div style={styles.button}>
+                <ButtonWhite onClick={preview}>preview</ButtonWhite>
+            </div>
         </div>
 
     </div>
@@ -25,14 +28,20 @@ const styles = {
         position: 'fixed',
         width: '80%',
         height: '15vh',
-        borderTop: '1px solid black'
+        borderTop: '1px solid black',
     },
     buttonContainer: {
         display: 'flex',
-        flex: 'row nowrap',
+        flex: 'row',
         justifyContent: 'space-around',
-        height: '100%',
-        width: '50%'
+        alignItems: 'center',
+        marginLeft: '60%',
+        marginRight: '10%',
+        height: '15vh',
+    },
+    button: {
+        width: '10vw',
+        // paddingLeft: '60px'
     }
 }
 

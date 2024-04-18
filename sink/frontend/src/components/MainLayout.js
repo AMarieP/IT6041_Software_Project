@@ -22,5 +22,8 @@ const styles = {
     flexGrow: 1, 
     padding: '20px', 
     marginLeft: '20%', 
+    marginBottom: '20vh',
+    display: 'flex',
+    flexFlow: 'column nowrap'
   },
 };

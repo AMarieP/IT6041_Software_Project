@@ -86,6 +86,7 @@ const styles = {
         paddingTop:'10px',
         position: "fixed",
         boxShadow: '4px 4px 5px lightgrey',
+        backgroundColor: 'white',
     },
     navScrolled: {
         position: "fixed",
