@@ -30,7 +30,7 @@ const getOneStockByID = async (req, res) => {
         
         //Error handling if does not exist, but ID is Valid - issues iwth this as will stil crash
         if(!stock){
-            res.status(404).json("This item of stock does not exist")
+            return res.status(404).json("This item of stock does not exist")
         }
         res.status(200).json(stock)
 
