@@ -37,9 +37,9 @@ const testProduct = {
 
 function ProductCard({product}) {
 
-    //Find main image
-    const mainImage = product.images.filter(image => image.order === 1)
-
+    //Find main image      // changed this so that if there is no order attatched then it will take the first image and if no image then null
+    const mainImage = product.images.find(image => image.order === 1) || product.images[0] || null
+    
     //Space and comma added to mediums array if needed
     const mediums = ()  => {
          return product.medium.length > 1 ? product.medium.join(', ') : product.medium
@@ -49,8 +49,9 @@ function ProductCard({product}) {
   return (
     <Link to={`/stock/edit/${product._id}`} style={styles.cardLink}>
         <div style={styles.container}>
-            {mainImage.length > 0 ? (
-                <img style={styles.image} src={mainImage[0].url} alt="Product" />
+            {mainImage ? (    // changed this comparison so it only needs to check if mainImage exists
+                
+                <img style={styles.image} src={mainImage.url} alt="Product" />
             ) : (
                 <div style={styles.noImageBox}>No Images</div>
             )}
