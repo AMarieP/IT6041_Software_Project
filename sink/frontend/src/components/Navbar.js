@@ -35,7 +35,7 @@ const Navbar = () => {
                 sink
             </Link>
             <ul style={styles.ul}>
-                <CustomLink to="/ViewStock">Stock</CustomLink>
+                <CustomLink to="/stock">Stock</CustomLink>
                 <CustomLink to="/ViewFandM">Frames And Matteboards</CustomLink>
                 {user && <CustomLink to="/StockCreate">Add new stock</CustomLink>}
                 {user && <CustomLink to={`/StockEditDelete/${'661475946dab09cfb9453495'}`}>Update and delete stock</CustomLink>}
