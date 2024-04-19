@@ -10,6 +10,7 @@ import ImageTile from "../ImageUpload/ImageTile";
 import PinnedBar from "../PinnedBar";
 
 const NewStockForm = () => {
+
   const [error, setError] = useState("");
   const [thisStock, setStock] = useState({
     name: "",
@@ -47,7 +48,7 @@ const NewStockForm = () => {
     e.preventDefault();
 
     const stock = thisStock;
-    console.log(stock);
+    console.log(stock.dimensions);
     const response = await fetch("/api/stock/", {
       method: "POST",
       body: JSON.stringify(stock),
@@ -84,6 +85,7 @@ const NewStockForm = () => {
    
     window.open(url, "_blank", "noopener, noreferrer")
   } 
+
 
   return (
     <form style={styles.StockCreationForm}>
